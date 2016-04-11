@@ -1,0 +1,13 @@
+#content .scene.clientEdit div.products {border-bottom: 1px solid #bbbbbb;}
+#content .scene.clientEdit div.products ul.items {padding-bottom: 25px;}
+
+#content .scene.clientEdit div.products > h3 {background: #dcdcdc; padding-top: 10px;}
+#content .scene.clientEdit div.products ul.items li.active h3 {color: #cccccc;}
+#content .scene.clientEdit div.products ul.items li.active ul.actions a,
+#content .scene.clientEdit div.products ul.items li.active ul.actions a:hover {background-color: #cccccc; cursor: default;}
+
+
+#content .scene.clientEdit div.users {border-bottom: 1px solid #bbbbbb;}
+#content .scene.clientEdit div.users ul.users li.user {display: block; font-size: 14px; padding: 9px 30px 10px; border-top: 1px solid #dedede;}
+#content .scene.clientEdit div.users ul.users li.user input {margin: 0 10px 0 0;}
+#content .scene.clientEdit div.users ul.users li.user label {display: inline-block; vertical-align: top; padding: 1px 0 0 0;}

@@ -1,0 +1,4 @@
+#content ul.actions input.button:hover,
+#content ul.actions a.button:hover {background-color: #aaaaaa;}
+#content ul.actions input.button.primary:hover,
+#content ul.actions a.button.primary:hover {background-color: #b25f5f;}

@@ -1,0 +1,4 @@
+#content ul.actions input.button:active,
+#content ul.actions a.button:active {background-color: #aaaaaa;}
+#content ul.actions input.button.primary:active,
+#content ul.actions a.button.primary:active {background-color: #b25f5f;}

@@ -1,0 +1,31 @@
+#content {position: relative;}
+#content .scene {position: relative; padding: 50px 0;}
+
+
+/* BASIC CONTENT */
+#content .scene .link {cursor: pointer;}
+#content .scene a {color: #911b1b;}
+
+
+/* LISTS */
+#content .scene ul,
+#content .scene ol {padding: 0 20px 15px;}
+
+
+/* ITEMS */
+#content .scene ul.items {padding: 0;}
+#content .scene ul.items li.item {display: block; padding-top: 20px; padding-bottom: 10px; border-top: 1px solid #dedede;}
+#content .scene ul.items li.item h3 {position: relative; z-index: 1;}
+
+
+/* TAGS */
+#content .scene ul.tags {position: relative; z-index: 1; padding-bottom: 20px;}
+#content .scene ul.tags li {font-size: 12px; display: inline-block; vertical-align: top;}
+#content .scene ul.tags li:after {content: "\00a0|\00a0"; color: #dedede;}
+#content .scene ul.tags li:last-child:after {content: "";}
+#content .scene li.item ul.tags {}
+
+
+
+/* ERROR MESSAGES */
+#content .errormessage {color: #df0000;}

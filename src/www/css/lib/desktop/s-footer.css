@@ -1,0 +1,8 @@
+/* FOOTER */
+#footer {text-align: left; border-top: 1px solid #f3f3f3; padding: 30px 0; min-width: 600px; margin: 0 auto;}
+
+#footer .vcard {font-size: 0;}
+#footer .vcard dl {display: inline-block; vertical-align: top; padding: 0 20px; width: 50%; box-sizing: border-box;}
+#footer .vcard dt {display: block; color: #911b1b; font-size: 15px;}
+#footer .vcard dd {display: block; color: #666666; padding-bottom: 20px;}
+
