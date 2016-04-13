@@ -88,7 +88,7 @@ class TypeClient extends Itemtype {
 //		print $sql;
 		if($query->sql($sql)) {
 			$products = $query->results();
-			$products = $IC->extendItems($products, array("tags" => true, "mediae" => true));
+			$products = $IC->extendItems($products, array("tags" => true, "mediae" => true, "user" => true));
 		}
 
 		return $products;

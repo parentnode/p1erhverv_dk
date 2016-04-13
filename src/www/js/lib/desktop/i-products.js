@@ -13,11 +13,12 @@ Util.Objects["products"] = new function() {
 
 			div._filter.checkTags = function(node) {
 
-				if(this.selected_tags.length) {
+				if(this.selected_tag) {
 
-					var regex = new RegExp("("+this.selected_tags.join(";|")+";)", "g");
-					var match = node._c.match(regex);
-					if(!match || match.length != this.selected_tags.length) {
+					var regex = new RegExp("(^|\b)"+this.selected_tag, "g");
+					u.bug(node._c);
+					u.bug(node._c.match(regex));
+					if(!node._c.match(regex)) {
 						return false;
 					}
 				}
@@ -26,11 +27,11 @@ Util.Objects["products"] = new function() {
 			}
 
 			div._filter.filterItems = function() {
-
+				u.bug("selected_tag:" + this.selected_tag);
 				var i, node;
-				if(this.current_filter != this.selected_tags.join(",")) {
+				if(this.current_filter != this.selected_tag) {
 
-					this.current_filter = this.selected_tags.join(",");
+					this.current_filter = this.selected_tag;
 					for(i = 0; node = this.div.products[i]; i++) {
 
 						if(this.checkTags(node)) {
@@ -44,9 +45,6 @@ Util.Objects["products"] = new function() {
 				}
 
 				u.rc(this, "filtering");
-
-				// invoke appropriate image loading
-		//		this.div.scrolled();
 
 			}
 
@@ -69,7 +67,7 @@ Util.Objects["products"] = new function() {
 			li._filter = div._filter;
 			u.e.click(li);
 			li.clicked = function(event) {
-				this._filter.selected_tags = [];
+				this._filter.selected_tag = "";
 
 				var i, node;
 				for(i = 0; node = this._filter.tags[i]; i++) {
@@ -89,14 +87,14 @@ Util.Objects["products"] = new function() {
 
 				u.e.click(li);
 				li.clicked = function(event) {
-					this._filter.selected_tags = [];
+					this._filter.selected_tag = "";
 
 					var i, node;
 					for(i = 0; node = this._filter.tags[i]; i++) {
 						u.rc(node, "selected");
 					}
 
-					this._filter.selected_tags.push(this.tag);
+					this._filter.selected_tag = this.tag;
 					u.ac(this, "selected");
 
 					// update list filtering
@@ -117,10 +115,10 @@ Util.Objects["products"] = new function() {
 
 			var text_nodes = u.qsa("h2,h3,h4,h5,p,ul.info,dl,li.tag", node);
 			for(j = 0; text_node = text_nodes[j]; j++) {
-				node._c += u.text(text_node).toLowerCase() + ";";
+				node._c += u.text(text_node).toLowerCase().replace(/[ \t\n\r]+/g, " ") + ";";
 			}
 
-
+//			u.bug("_c" + node._c)
 			node._item_id = u.cv(node, "id");
 			node._variant = u.cv(node, "variant");
 			node._format = u.cv(node, "format");
@@ -128,7 +126,7 @@ Util.Objects["products"] = new function() {
 			node._image = u.ie(node, "div", {"class":"image"});
 			u.ae(node._image, "img", {"src":"/images/"+node._item_id+"/"+node._variant+"/480x480."+node._format});
 
-			u.ce(node, {"type":"link"});
+//			u.ce(node, {"type":"link"});
 
 		}
 

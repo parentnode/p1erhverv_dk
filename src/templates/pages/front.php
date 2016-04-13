@@ -66,7 +66,7 @@ $clients = $typeClient->getClients();
 					<? endif; ?>
 					</ul>
 
-					<h3 itemprop="headline"><a href="/product/<?= $item["sindex"] ?>"><?= $item["name"] ?></a></h3>
+					<h3 itemprop="headline"><?= $item["name"] ?></h3>
 
 					<ul class="info">
 						<li class="published_at" itemprop="datePublished" content="<?= date("Y-m-d", strtotime($item["published_at"])) ?>"><?= date("Y-m-d, H:i", strtotime($item["published_at"])) ?></li>
@@ -96,9 +96,9 @@ $clients = $typeClient->getClients();
 						</li>
 					</ul>
 
-					<? if($item["description"]): ?>
-					<div class="description" itemprop="description">
-						<p><?= nl2br($item["description"]) ?></p>
+					<? if($item["html"]): ?>
+					<div class="articlebody" itemprop="articleBody">
+						<?= $item["html"] ?>
 					</div>
 					<? endif; ?>
 
