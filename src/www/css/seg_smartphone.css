@@ -138,7 +138,11 @@ dd {display: inline-block; vertical-align: top; font-size: 13px; line-height: 1.
 #content .scene.login .field input.default {color: #aaaaaa;}
 #content .field .indicator {display: none;}
 #content ul.actions {padding: 0 20px;}
-#content ul.actions li {width: auto; height: auto; display: inline-block; padding: 0 5px 10px 0; vertical-align: top;}
+#content ul.actions li {width: auto; height: auto; display: inline-block; padding: 0 5px 10px 0; vertical-align: top;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
 #content ul.actions input.button {width: auto; height: 26px; padding: 3px 10px;}
 @media all and (-webkit-min-device-pixel-ratio:0) {
 	#content ul.actions input.button {padding-bottom: 4px;

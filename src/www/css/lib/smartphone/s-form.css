@@ -15,7 +15,11 @@
 
 /* BUTTONS */
 #content ul.actions {padding: 0 20px;}
-#content ul.actions li {width: auto; height: auto; display: inline-block; padding: 0 5px 10px 0; vertical-align: top;}
+#content ul.actions li {width: auto; height: auto; display: inline-block; padding: 0 5px 10px 0; vertical-align: top;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
 
 #content ul.actions input.button {width: auto; height: 26px; padding: 3px 10px;}
 @media all and (-webkit-min-device-pixel-ratio:0) {
