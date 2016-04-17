@@ -1,0 +1,27 @@
+/* FRONT */
+#content .scene.front {}
+	
+#content .scene.front div.article {padding-bottom: 20px;}
+#content .scene.front div.article ul.info {display: none;}
+
+#content .scene.front div.products div.filter li {cursor: pointer;}
+#content .scene.front div.products div.filter li.selected {color: #911b1b;}
+
+#content .scene.front div.products ul.products {}
+#content .scene.front div.products ul.products li.product {display: block;}
+#content .scene.front div.products ul.products li.product div.image {margin: 0 20px 10px;}
+#content .scene.front div.products ul.products li.product div.image img {width: 100%;}
+
+#content .scene.front div.products ul.products li.product ul.tags,
+#content .scene.front div.products ul.products li.product ul.info {display: none;}
+
+
+
+/* PRODUCT */
+#content .scene.product {}
+#content .scene.product > ul.actions {padding-bottom: 20px;}
+
+#content .scene.product div.product {font-size: 0; padding: 0 0 0 20px;}
+#content .scene.product div.product div.image {width: 50%; display: inline-block; vertical-align: top;}
+#content .scene.product div.product div.image img {width: 100%;}
+#content .scene.product div.product div.text {width: 50%; display: inline-block; vertical-align: top; box-sizing: border-box; padding: 0 0 0 20px;}

@@ -4408,7 +4408,6 @@ u.defaultFilters = function(div) {
 		for(j = 0; text_node = text_nodes[j]; j++) {
 			node._c += u.text(text_node).toLowerCase() + ";"; 
 		}
-		u.bug("c:" + node._c)
 	}
 	var tags = u.qsa("li.tag", div.list);
 	if(tags) {

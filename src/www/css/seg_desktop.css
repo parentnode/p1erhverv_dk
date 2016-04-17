@@ -76,7 +76,7 @@ body.fixed #page {width: 960px;}
 #header .logo {z-index: 10; color: #911b1b; position: absolute; top: 50px; left: 20px; font-size: 30px; cursor: pointer;
 	font-family: Georgia;
 }
-#header .servicenavigation {position: absolute; top: 9px; right: 50px;}
+#header .servicenavigation {position: absolute; top: 9px; right: 20px;}
 #header .servicenavigation li {display: inline-block; vertical-align: top; color: #999999;}
 #header .servicenavigation li.navigation {display: none;}
 #header .servicenavigation li:after {content: "\00a0\00a0|\00a0\00a0";}
