@@ -20,7 +20,7 @@
 
 /* TAGS */
 #content .scene ul.tags {position: relative; z-index: 1; padding-bottom: 20px;}
-#content .scene ul.tags li {font-size: 12px; display: inline-block; vertical-align: top;}
+#content .scene ul.tags li {font-size: 13px; display: inline-block; vertical-align: top; padding: 4px 0;}
 #content .scene ul.tags li:after {content: "\00a0|\00a0"; color: #dedede;}
 #content .scene ul.tags li:last-child:after {content: "";}
 #content .scene li.item ul.tags {}
