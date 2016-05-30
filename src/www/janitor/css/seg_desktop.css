@@ -71,6 +71,7 @@ dt {color: #7d848c; display: inline-block; vertical-align: top; font-size: 12px;
 #navigation > ul.navigation h3:hover {color: #ffffff;}
 #navigation > ul.navigation ul {}
 #navigation > ul.navigation ul li {padding-left: 20px; border-top: 1px solid #404a56;}
+#navigation > ul.navigation > li.empty {display: none;}
 #navigation li.selected a {padding-left: 35px; color: #ffffff;}
 
 
@@ -611,7 +612,7 @@ body #selection_options ul.actions a.button:hover {background-color: #313942;}
 #content div.disabled_items > p {padding-top: 20px;}
 #content div.all_items > h2 + ul.items,
 #content div.all_items > p + ul.items {border-top: 1px solid #dedede;}
-#content div.all_items ul.items > li {display: block; position: relative; border-bottom: 1px solid #dedede;}
+#content div.all_items ul.items > li {display: block; position: relative; border-bottom: 1px solid #dedede; overflow: hidden;}
 #content div.all_items ul.items > li:hover {background-color: #edf0f2;}
 #content div.all_items ul.items > li h3 {padding: 10px 250px 10px 30px;}
 #content div.all_items.images ul.items > li {background-repeat: no-repeat; background-position: 0px center;}

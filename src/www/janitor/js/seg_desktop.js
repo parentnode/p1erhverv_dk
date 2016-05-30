@@ -4365,12 +4365,18 @@ Util.Objects["collapseHeader"] = new function() {
 				this.div._toggle_is_closed = false;
 				u.saveNodeCookie(this.div, "open", 1, {"ignore_classvars":true});
 				u.addCollapseArrow(this);
+				if(typeof(this.div.headerExpanded) == "function") {
+					this.div.headerExpanded();
+				}
 			}
 			else {
 				u.as(this.div, "height", this.offsetHeight+"px");
 				this.div._toggle_is_closed = true;
 				u.saveNodeCookie(this.div, "open", 0, {"ignore_classvars":true});
 				u.addExpandArrow(this);
+				if(typeof(this.div.headerCollapsed) == "function") {
+					this.div.headerCollapsed();
+				}
 			}
 		}
 		var state = u.getNodeCookie(div, "open", {"ignore_classvars":true});
@@ -4379,6 +4385,9 @@ Util.Objects["collapseHeader"] = new function() {
 		}
 		else {
 			u.addCollapseArrow(div._toggle_header);
+			if(typeof(div.headerExpanded) == "function") {
+				div.headerExpanded();
+			}
 		}
 	}
 }
@@ -7679,37 +7688,43 @@ Util.Objects["page"] = new function() {
 			var sections = u.qsa("ul.navigation > li", page.nN);
 			if(sections) {
 				for(i = 0; section = sections[i]; i++) {
-					section.nodes = u.qsa("li", section);
-					if(section.nodes.length) {
-						for(j = 0; node = section.nodes[j]; j++) {
-							u.ce(node, {"type":"link"});
-							if(u.hc(node, document.body.className)) {
-								u.ac(node, "selected");
+					section.header = u.qs("h3", section);
+					if(section.header) {
+						section.nodes = u.qsa("li", section);
+						if(section.nodes.length) {
+							for(j = 0; node = section.nodes[j]; j++) {
+								u.ce(node, {"type":"link"});
+								if(u.hc(node, document.body.className)) {
+									u.ac(node, "selected");
+								}
+							}
+							if(section.header) {
+								section.header.section = section;
+								u.e.click(section.header);
+								section.header.clicked = function(event) {
+									u.e.kill(event);
+									if(this.section.is_open) {
+										this.section.is_open = false;
+										u.as(this.section, "height", this.offsetHeight+"px");
+										u.saveNodeCookie(this.section, "open", 0, {"ignore_classvars":true});
+										u.addExpandArrow(this);
+									}
+									else {
+										this.section.is_open = true;
+										u.as(this.section, "height", "auto");
+										u.saveNodeCookie(this.section, "open", 1, {"ignore_classvars":true});
+										u.addCollapseArrow(this);
+									}
+								}
+								var state = u.getNodeCookie(section, "open", {"ignore_classvars":true});
+								if(!state) {
+									section.is_open = true;
+								}
+								section.header.clicked();
 							}
 						}
-						section.header = u.qs("h3", section);
-						if(section.header) {
-							section.header.section = section;
-							u.e.click(section.header);
-							section.header.clicked = function() {
-								if(this.section.is_open) {
-									this.section.is_open = false;
-									u.as(this.section, "height", this.offsetHeight+"px");
-									u.saveNodeCookie(this.section, "open", 0, {"ignore_classvars":true});
-									u.addExpandArrow(this);
-								}
-								else {
-									this.section.is_open = true;
-									u.as(this.section, "height", "auto");
-									u.saveNodeCookie(this.section, "open", 1, {"ignore_classvars":true});
-									u.addCollapseArrow(this);
-								}
-							}
-							var state = u.getNodeCookie(section, "open", {"ignore_classvars":true});
-							if(!state) {
-								section.is_open = true;
-							}
-							section.header.clicked();
+						else {
+							u.ac(section, "empty");
 						}
 					}
 					else {
@@ -7720,12 +7735,39 @@ Util.Objects["page"] = new function() {
 					}
 				}
 			}
-			u.e.hover(page.hN);
+			u.ass(page.nN, {
+				"display":"none"
+			});
+			if(u.e.event_support == "mouse") {
+				u.e.hover(page.hN);
+			}
+			else {
+				u.e.click(page.hN);
+				page.hN.clicked = function(event) {
+					if(!this.is_open) {
+						u.e.kill(event);
+						this.over();
+					}
+				}
+				page.hN.close = function(event) {
+					if(this.is_open) {
+						u.e.kill(event);
+						this.out();
+					}
+				}
+				u.e.addWindowEndEvent(page.hN, "close");
+			}
 			page.hN.over = function() {
+				this.is_open = true;
+				u.a.transition(page.nN, "none");
+				page.nN.transitioned = null;
 				u.t.resetTimer(this.t_navigation);
 				u.a.transition(this, "all 0.3s ease-in-out");
 				u.ass(this, {
 					"width":"230px"
+				});
+				u.ass(page.nN, {
+					"display":"block"
 				});
 				u.a.transition(page.nN, "all 0.3s ease-in");
 				u.ass(page.nN, {
@@ -7748,7 +7790,9 @@ Util.Objects["page"] = new function() {
 				}
 			}
 			page.hN.out = function() {
-				u.rc(this, "over");
+				this.is_open = false;
+				u.a.transition(page.nN, "none");
+				page.nN.transitioned = null;
 				var span, i;
 				for(i = 0; span = page.hN.janitor_spans[i]; i++) {
 					if(i == 0) {
@@ -7764,6 +7808,12 @@ Util.Objects["page"] = new function() {
 							"transform":"translate(-8px, -30px)"
 						});
 					}
+				}
+				page.nN.transitioned = function() {
+					u.bug("hide me")
+					u.ass(this, {
+						"display":"none"
+					});
 				}
 				u.a.transition(page.nN, "all 0.2s ease-in");
 				u.ass(page.nN, {
@@ -9549,7 +9599,22 @@ Util.Objects["newslettersProfile"] = new function() {
 		}
 	}
 }
-
+Util.Objects["resetPassword"] = new function() {
+	this.init = function(form) {
+		u.f.init(form);
+		form.submitted = function() {
+			this.response = function(response) {
+				if(response.cms_status == "success") {
+					location.href = "/login";
+				}
+				else {
+					page.notify({"isJSON":true, "cms_status":"error", "cms_message":"Password could not be updated"});
+				}
+			}
+			u.request(this, this.action, {"method":"post", "params":u.f.getParams(this)});
+		}
+	}
+}
 
 
 /*i-form.js*/

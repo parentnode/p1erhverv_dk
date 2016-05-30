@@ -29,4 +29,6 @@ $username = stringOr(getPost("username"));
 		</ul>
 	<?= $model->formEnd() ?>
 
+	<p>Har du <a href="/login/glemt">glemt din kode</a>?</p>
+
 </div>

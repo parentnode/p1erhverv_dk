@@ -84,6 +84,7 @@ dt {color: #7d848c; display: inline-block; vertical-align: top; font-size: 12px;
 #navigation > ul.navigation h3:active {color: #ffffff;}
 #navigation > ul.navigation ul {}
 #navigation > ul.navigation ul li {padding-left: 20px; border-top: 1px solid #404a56;}
+#navigation > ul.navigation > li.empty {display: none;}
 #navigation > ul.navigation li.front {border-bottom: 1px solid #777777;}
 #navigation > ul.navigation li.web {border-top: 1px solid #777777;}
 #navigation .selected {color: #8c9399; background: #f5f7f8;}
