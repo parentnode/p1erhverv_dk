@@ -59,7 +59,7 @@ class TypeClient extends Itemtype {
 
 
 		$clients = array();
-		$sql = "SELECT items.id, items.itemtype, items.sindex, items.published_at, items.modified_at, items.user_id FROM ".UT_ITEMS." as items, ".$this->db_users." as users WHERE users.client_id = items.id AND users.user_id = $user_id";
+		$sql = "SELECT items.id, items.itemtype, items.sindex, items.published_at, items.modified_at, items.user_id FROM ".UT_ITEMS." as items, ".$this->db_users." as users WHERE users.client_id = items.id AND users.user_id = $user_id AND items.status = 1";
 //		print $sql;
 		if($query->sql($sql)) {
 			$clients = $query->results();
