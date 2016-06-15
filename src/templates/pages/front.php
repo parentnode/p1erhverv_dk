@@ -10,9 +10,19 @@ $clients = $typeClient->getClients();
 <div class="scene front i:front">
 
 <? if($clients): ?>
+
+	<? if(count($clients) > 1): ?>
+	<ul class="clients">
+	<? foreach($clients as $client): ?>
+		<li class="client" data-tab="<?= superNormalize($client["name"]) ?>"><?= $client["name"] ?></li>
+	<? endforeach; ?>
+	</ul>
+	<? endif; ?>
+
 	<? foreach($clients as $client):
 		$media = $IC->sliceMedia($client); ?>
 
+	<div class="client" id="<?= superNormalize($client["name"]) ?>">
 		<div class="article" itemscope itemtype="http://schema.org/Article">
 
 			<h1 itemprop="headline"><?= $client["name"] ?></h1>
@@ -108,6 +118,8 @@ $clients = $typeClient->getClients();
 
 		</div>
 		<? endif; ?>
+
+	</div>
 
 	<? endforeach; ?>
 
