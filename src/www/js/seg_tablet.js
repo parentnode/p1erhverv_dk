@@ -3691,6 +3691,7 @@ Util.Objects["front"] = new function() {
 				var i, tab;
 				for(i = 0; tab = this.client_tabs[i]; i++) {
 					tab.scene = this;
+					tab.i = i;
 					tab.pane = u.qs("#" + tab.getAttribute("data-tab"));
 					tab.pane.scene = this;
 					tab.pane.tab = tab;
@@ -3700,6 +3701,7 @@ Util.Objects["front"] = new function() {
 					}
 				}
 				this.selectTab = function(selected_tab) {
+					u.saveCookie("selected-tab", selected_tab.i);
 					var i, tab;
 					for(i = 0; tab = this.client_tabs[i]; i++) {
 						u.rc(tab, "selected");
@@ -3712,7 +3714,11 @@ Util.Objects["front"] = new function() {
 						"display":"block"
 					})
 				}
-				this.selectTab(this.client_tabs[0]);
+				var selected_tab = u.getCookie("selected-tab");
+				if(!selected_tab) {
+					selected_tab = 0;
+				}
+				this.selectTab(this.client_tabs[selected_tab]);
 			}
 			else {
 				var first_client = u.qs("div.client", this);
