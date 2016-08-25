@@ -116,6 +116,12 @@ dd {display: inline-block; vertical-align: top; font-size: 13px; line-height: 1.
 #content .scene.front div.client {display: none;}
 #content .scene.front div.article {padding-bottom: 20px;}
 #content .scene.front div.article ul.info {display: none;}
+#content .scene.front div.contexts {padding-bottom: 20px;}
+#content .scene.front div.contexts ul.contexts {display: block;}
+#content .scene.front div.contexts ul.context_options {padding: 0;}
+#content .scene.front div.contexts ul.context_options li {display: inline-block; padding: 6px 12px; border: 1px solid #911b1b; margin: 3px 3px 3px 0;}
+#content .scene.front div.contexts ul.context_options li.selected {background-color: #911b1b;}
+#content .scene.front div.contexts ul.context_options li.selected a {color: #ffffff;}
 #content .scene.front div.products div.filter li {cursor: pointer;}
 #content .scene.front div.products div.filter li.selected {color: #911b1b;}
 #content .scene.front div.products ul.products {}

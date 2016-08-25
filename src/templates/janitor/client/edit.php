@@ -11,6 +11,9 @@ $active_items = $model->getProducts($item_id);
 $passive_items = $IC->getItems(array("itemtype" => "product", "status" => 1, "extend" => true));
 
 $users = $model->getUsers($item_id);
+$model->getContexts($item_id);
+$contexts = $model->getContexts($item_id);
+
 ?>
 <div class="scene defaultEdit <?= $itemtype ?>Edit">
 	<h1>Edit client</h1>
@@ -65,7 +68,7 @@ $users = $model->getUsers($item_id);
 	</div>
 
 	<div class="users i:collapseHeader i:clientUsers"
- 		data-csrf-token="<?= session()->value("csrf") ?>" 
+		data-csrf-token="<?= session()->value("csrf") ?>" 
 		data-item-remove="<?= $this->validPath("/janitor/client/removeUser/".$item["id"]) ?>"
 		data-item-add="<?= $this->validPath("/janitor/client/addUser/".$item["id"]) ?>"
 		>
@@ -76,6 +79,40 @@ $users = $model->getUsers($item_id);
 			<li class="user user_id:<?= $user["id"] ?><?= $user["selected"] ? " selected" : "" ?>"><?= $user["nickname"] ?></li>
 		<? endforeach; ?>
 		</ul>
+	</div>
+
+	<div class="contexts i:collapseHeader">
+		<h2>Contexts</h2>
+		<p>
+			You can also add additional tag-context filters, by adding additional tag-contexts below.
+		</p>
+		<h3>Active contexts</h3>
+		<div class="all_items active filters sortable i:defaultList i:activeContexts"
+		 	data-csrf-token="<?= session()->value("csrf") ?>" 
+			data-item-order="<?= $this->validPath("/janitor/client/updateContextOrder/".$item["id"]) ?>"
+			data-item-remove="<?= $this->validPath("/janitor/client/removeContext/".$item["id"]) ?>"
+		 	>
+			<ul class="items">
+			<? foreach($contexts["client"] as $a_item): ?>
+				<li class="item context item_id:<?= $a_item["context"] ?>">
+					<h3><?= $a_item["context"] ?></h3>
+				</li>
+			<? endforeach; ?>
+			</ul>
+		</div>
+		<h3>Passive contexts</h3>
+		<div class="all_items inactive filters i:defaultList i:inactiveContexts"
+		 	data-csrf-token="<?= session()->value("csrf") ?>" 
+			data-item-add="<?= $this->validPath("/janitor/client/addContext/".$item["id"]) ?>"
+		 	>
+			<ul class="items">
+			<? foreach($contexts["all"] as $p_item): ?>
+				<li class="item context item_id:<?= $p_item["context"] ?><?= (arrayKeyValue($contexts["client"], "context", $p_item["context"]) !== false) ? " active" : "" ?>">
+					<h3><?= $p_item["context"] ?></h3>
+				</li>
+			<? endforeach; ?>
+			</ul>
+		</div>
 	</div>
 
 </div>

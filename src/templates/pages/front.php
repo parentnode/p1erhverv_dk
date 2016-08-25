@@ -6,6 +6,34 @@ $typeClient = $IC->typeObject($itemtype);
 // get clients for current user
 $clients = $typeClient->getClients();
 
+
+$selected_contexts = session()->value("selected_contexts");
+$items = false;
+
+// context = client_id/context/tag_id
+$context = getVar("context");
+if($context) {
+	list($client_id, $context_value, $tag_id) = explode("/", $context);
+
+	$new_context_point = false;
+	$selected_contexts[$client_id][$context_value] = $tag_id;
+
+	foreach($selected_contexts[$client_id] as $selected_context => $tag_id) {
+		if($new_context_point) {
+			unset($selected_contexts[$client_id][$selected_context]);
+		}
+
+		if($selected_context == $context_value) {
+			$new_context_point = true;
+		}
+
+	}
+
+	session()->value("selected_contexts", $selected_contexts);
+}
+// test reset context value
+//session()->reset("selected_contexts");
+
 ?>
 <div class="scene front i:front">
 
@@ -56,8 +84,48 @@ $clients = $typeClient->getClients();
 			<? endif; ?>
 		</div>
 
+		<?
+		$client_contexts = $typeClient->getContexts($client["id"]);
+		if($client_contexts["client"]): ?>
 
-		<? $items = $typeClient->getProducts($client["id"]); ?>
+		<div class="contexts">
+			<h2>Vælg mærke og sortiment</h2>
+			<ul class="contexts">
+			<?
+			foreach($client_contexts["client"] as $context):
+				$tags = $IC->getTags(array("context" => $context["context"])); ?>
+				<? print_r($tags); ?>
+				<li class="context">
+					<ul class="context_options">
+						<? foreach($tags as $tag): ?>
+						<li class="context<?= isset($selected_contexts[$client["id"]][$context["context"]]) && $selected_contexts[$client["id"]][$context["context"]] == $tag["id"] ? " selected" : ""?>"><a href="?context=<?= $client["id"] ?>/<?= $context["context"] ?>/<?= $tag["id"] ?>"><?= $tag["value"] ?></a></li>
+						<? endforeach; ?>
+					</ul>
+				
+				</li>
+				<?
+				if(!isset($selected_contexts[$client["id"]][$context["context"]])) {
+					break;
+				}
+			endforeach;
+			?>
+			</ul>
+		</div>
+			<?
+			// ready to actually get items
+			if(count($client_contexts["client"]) == count($selected_contexts[$client["id"]])):
+				$items = $typeClient->getProducts($client["id"], $selected_contexts[$client["id"]]);
+			endif;
+
+		// no extra client context
+		else: 
+
+			// just get all client items
+			$items = $typeClient->getProducts($client["id"]);
+
+		endif; 
+		?>
+
 		<? if($items): ?>
 
 		<div class="products i:products">

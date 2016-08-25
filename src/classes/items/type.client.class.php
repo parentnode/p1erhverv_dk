@@ -19,6 +19,7 @@ class TypeClient extends Itemtype {
 
 		$this->db_users = SITE_DB.".item_client_users";
 		$this->db_products = SITE_DB.".item_client_products";
+		$this->db_contexts = SITE_DB.".item_client_contexts";
 
 
 		// Name
@@ -75,8 +76,11 @@ class TypeClient extends Itemtype {
 	}
 
 
+
+	// PRODUCTS
+
 	// get clients available for client id
-	function getProducts($client_id) {
+	function getProducts($client_id, $contexts=false) {
 
 		$IC = new Items();
 		$query = new Query();
@@ -89,6 +93,22 @@ class TypeClient extends Itemtype {
 		if($query->sql($sql)) {
 			$products = $query->results();
 			$products = $IC->extendItems($products, array("tags" => true, "mediae" => true, "user" => true));
+		}
+
+		// is specific context defined?
+		if($contexts) {
+			foreach($products as $index => $product) {
+				foreach($contexts as $tag_id) {
+
+					// filter out any product which misses a tag
+					if(arrayKeyValue($product["tags"], "id", $tag_id) === false) {
+						unset($products[$index]);
+						break;
+					}
+
+				}
+			}
+
 		}
 
 		return $products;
@@ -170,6 +190,8 @@ class TypeClient extends Itemtype {
 
 
 
+	// USERS
+
 	// get user list for this client
 	function getUsers($client_id) {
 
@@ -249,6 +271,104 @@ class TypeClient extends Itemtype {
 		return false;
 	}
 
+
+
+	// VIEW CONTEXTS
+
+	// get context list for this client
+	function getContexts($client_id) {
+
+		$query = new Query();
+		$query->checkDbExistance($this->db_contexts);
+
+		// get all users
+		$all_contexts = array();
+		if($query->sql("SELECT context FROM ".SITE_DB.".tags as tags WHERE context != 'category' GROUP BY context ORDER BY context ASC")) {
+			$all_contexts = $query->results();
+		}
+
+		// get users for this client
+		$client_contexts = array();
+		if($query->sql("SELECT context FROM ".$this->db_contexts." WHERE client_id = $client_id ORDER BY position ASC")) {
+			$client_contexts = $query->results();
+		}
+
+		return array("all" => $all_contexts, "client" => $client_contexts);
+	}
+
+	// add context filter to this client
+	function addContext($action) {
+
+		if(count($action) == 3) {
+			$client_id = $action[1];
+			$context = $action[2];
+
+			$query = new Query();
+			$query->checkDbExistance($this->db_contexts);
+
+
+			$sql = "INSERT INTO ".$this->db_contexts." VALUES(DEFAULT, ".$client_id.", '".$context."', 0)";
+			// print $sql;
+			if($query->sql($sql)) {
+				message()->addMessage("Context added");
+				return true;
+			}
+		}
+
+		message()->addMessage("Context could not be added", array("type" => "error"));
+		return false;
+	}
+
+	// remove context filter from this client
+	function removeContext($action) {
+
+		if(count($action) == 3) {
+			$client_id = $action[1];
+			$context = $action[2];
+
+			$query = new Query();
+			$query->checkDbExistance($this->db_contexts);
+
+
+			$sql = "DELETE FROM ".$this->db_contexts." WHERE client_id = $client_id AND context = '$context'";
+			// print $sql;
+			if($query->sql($sql)) {
+				message()->addMessage("Context removed");
+				return true;
+			}
+
+		}
+
+		message()->addMessage("Context could not be removed", array("type" => "error"));
+		return false;
+
+	}
+
+
+	// Update context order
+	function updateContextOrder($action) {
+
+		$order_list = getPost("order");
+		if(count($action) == 2 && $order_list) {
+
+			$client_id = $action[1];
+			$query = new Query();
+			$order = explode(",", $order_list);
+
+			for($i = 0; $i < count($order); $i++) {
+				$context = $order[$i];
+				$sql = "UPDATE ".$this->db_contexts." SET position = ".($i+1)." WHERE context = '".$context."' AND client_id = $client_id";
+				$query->sql($sql);
+			}
+
+			message()->addMessage("Order updated");
+			return true;
+		}
+	
+		message()->addMessage("Context order could not be updated", array("type" => "error"));
+		return false;
+
+	}
 
 }
 
