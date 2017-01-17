@@ -6,6 +6,8 @@ CREATE TABLE `SITE_DB`.`item_client` (
   `html` text NOT NULL,
   `secret_url_token` varchar(100) NOT NULL,  
 
+  `position` int(11) DEFAULT '0',
+
   PRIMARY KEY  (`id`),
   KEY `item_id` (`item_id`),
   CONSTRAINT `item_client_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `SITE_DB`.`items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

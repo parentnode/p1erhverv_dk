@@ -33,7 +33,8 @@ class TypeClient extends Itemtype {
 
 		// HTML
 		$this->addToModel("html", array(
-			"required" => true,
+			"label" => "Intro tekst",
+			"hint_message" => "Add a description of this client.", 
 		));
 
 		// secret_url_token
@@ -56,11 +57,11 @@ class TypeClient extends Itemtype {
 
 
 		$query = new Query();
-		$query->checkDbExistance($this->db_users);
+		$query->checkDbExistence($this->db_users);
 
 
 		$clients = array();
-		$sql = "SELECT items.id, items.itemtype, items.sindex, items.published_at, items.modified_at, items.user_id FROM ".UT_ITEMS." as items, ".$this->db_users." as users WHERE users.client_id = items.id AND users.user_id = $user_id AND items.status = 1";
+		$sql = "SELECT items.id, items.itemtype, items.sindex, items.published_at, items.modified_at, items.user_id FROM ".UT_ITEMS." as items, ".$this->db." as clients, ".$this->db_users." as users WHERE users.client_id = items.id AND users.user_id = $user_id AND items.id = clients.item_id AND items.status = 1 ORDER BY clients.position";
 //		print $sql;
 		if($query->sql($sql)) {
 			$clients = $query->results();
@@ -84,7 +85,7 @@ class TypeClient extends Itemtype {
 
 		$IC = new Items();
 		$query = new Query();
-		$query->checkDbExistance($this->db_products);
+		$query->checkDbExistence($this->db_products);
 
 
 		$products = array();
@@ -96,7 +97,7 @@ class TypeClient extends Itemtype {
 		}
 
 		// is specific context defined?
-		if($contexts) {
+		if($contexts && $products) {
 			foreach($products as $index => $product) {
 				foreach($contexts as $tag_id) {
 
@@ -123,7 +124,7 @@ class TypeClient extends Itemtype {
 			$product_id = $action[2];
 
 			$query = new Query();
-			$query->checkDbExistance($this->db_products);
+			$query->checkDbExistence($this->db_products);
 
 
 			$sql = "INSERT INTO ".$this->db_products." VALUES(DEFAULT, ".$client_id.", ".$product_id.", 0)";
@@ -147,7 +148,7 @@ class TypeClient extends Itemtype {
 			$product_id = $action[2];
 
 			$query = new Query();
-			$query->checkDbExistance($this->db_products);
+			$query->checkDbExistence($this->db_products);
 
 
 			$sql = "DELETE FROM ".$this->db_products." WHERE client_id = $client_id AND product_id = $product_id";
@@ -196,7 +197,7 @@ class TypeClient extends Itemtype {
 	function getUsers($client_id) {
 
 		$query = new Query();
-		$query->checkDbExistance($this->db_users);
+		$query->checkDbExistence($this->db_users);
 
 		// get all users
 		$all_users = array();
@@ -231,7 +232,7 @@ class TypeClient extends Itemtype {
 			$user_id = $action[2];
 
 			$query = new Query();
-			$query->checkDbExistance($this->db_users);
+			$query->checkDbExistence($this->db_users);
 
 
 			$sql = "INSERT INTO ".$this->db_users." VALUES(DEFAULT, ".$client_id.", ".$user_id.")";
@@ -255,7 +256,7 @@ class TypeClient extends Itemtype {
 			$user_id = $action[2];
 
 			$query = new Query();
-			$query->checkDbExistance($this->db_users);
+			$query->checkDbExistence($this->db_users);
 
 
 			$sql = "DELETE FROM ".$this->db_users." WHERE client_id = $client_id AND user_id = $user_id";
@@ -279,7 +280,7 @@ class TypeClient extends Itemtype {
 	function getContexts($client_id) {
 
 		$query = new Query();
-		$query->checkDbExistance($this->db_contexts);
+		$query->checkDbExistence($this->db_contexts);
 
 		// get all users
 		$all_contexts = array();
@@ -304,7 +305,7 @@ class TypeClient extends Itemtype {
 			$context = $action[2];
 
 			$query = new Query();
-			$query->checkDbExistance($this->db_contexts);
+			$query->checkDbExistence($this->db_contexts);
 
 
 			$sql = "INSERT INTO ".$this->db_contexts." VALUES(DEFAULT, ".$client_id.", '".$context."', 0)";
@@ -327,7 +328,7 @@ class TypeClient extends Itemtype {
 			$context = $action[2];
 
 			$query = new Query();
-			$query->checkDbExistance($this->db_contexts);
+			$query->checkDbExistence($this->db_contexts);
 
 
 			$sql = "DELETE FROM ".$this->db_contexts." WHERE client_id = $client_id AND context = '$context'";

@@ -4,7 +4,7 @@ global $IC;
 global $model;
 global $itemtype;
 
-$items = $IC->getItems(array("itemtype" => $itemtype, "order" => "status DESC, published_at DESC", "extend" => true));
+$items = $IC->getItems(array("itemtype" => $itemtype, "order" => "status DESC, position ASC, published_at DESC", "extend" => true));
 
 ?>
 
@@ -15,7 +15,7 @@ $items = $IC->getItems(array("itemtype" => $itemtype, "order" => "status DESC, p
 		<?= $JML->listNew(array("label" => "New client")) ?>
 	</ul>
 
-	<div class="all_items i:defaultList filters"<?= $JML->jsData() ?>>
+	<div class="all_items i:defaultList sortable filters"<?= $JML->jsData() ?>>
 <?		if($items): ?>
 		<ul class="items">
 <?			foreach($items as $item): ?>

@@ -3373,15 +3373,6 @@ Util.insertElement = u.ie = function(_parent, node_type, attributes) {
 	}
 	return false;
 }
-Util.insertAfter = u.ia = function(after_node, insert_node) {
-	var next_node = u.ns(after_node);
-	if(next_node) {
-		after_node.parentNode.insertBefore(next_node, insert_node);
-	}
-	else {
-		after_node.parentNode.appendChild(insert_node);
-	}
-}
 Util.wrapElement = u.we = function(node, node_type, attributes) {
 	try {
 		var wrapper_node = node.parentNode.insertBefore(document.createElement(node_type), node);
@@ -3596,6 +3587,15 @@ Util.hasFixedParent = u.hfp = function(node) {
 	}
 	return false;
 }
+Util.insertAfter = u.ia = function(after_node, insert_node) {
+	var next_node = u.ns(after_node);
+	if(next_node) {
+		after_node.parentNode.insertBefore(next_node, insert_node);
+	}
+	else {
+		after_node.parentNode.appendChild(insert_node);
+	}
+}
 Util.selectText = function(node) {
 	var selection = window.getSelection();
 	var range = document.createRange();
@@ -3686,46 +3686,7 @@ Util.Objects["front"] = new function() {
 		}
 		scene.ready = function() {
 			page.cN.scene = this;
-			this.client_tabs = u.qsa("ul.clients li", this);
-			if(this.client_tabs.length) {
-				var i, tab;
-				for(i = 0; tab = this.client_tabs[i]; i++) {
-					tab.scene = this;
-					tab.i = i;
-					tab.pane = u.qs("#" + tab.getAttribute("data-tab"));
-					tab.pane.scene = this;
-					tab.pane.tab = tab;
-					u.ce(tab);
-					tab.clicked = function() {
-						this.scene.selectTab(this);
-					}
-				}
-				this.selectTab = function(selected_tab) {
-					u.saveCookie("selected-tab", selected_tab.i);
-					var i, tab;
-					for(i = 0; tab = this.client_tabs[i]; i++) {
-						u.rc(tab, "selected");
-						u.ass(tab.pane, {
-							"display":"none"
-						})
-					}
-					u.ac(selected_tab, "selected");
-					u.ass(selected_tab.pane, {
-						"display":"block"
-					})
-				}
-				var selected_tab = u.getCookie("selected-tab");
-				if(!selected_tab) {
-					selected_tab = 0;
-				}
-				this.selectTab(this.client_tabs[selected_tab]);
-			}
-			else {
-				var first_client = u.qs("div.client", this);
-				u.ass(first_client, {
-					"display":"block"
-				})
-			}
+			// 	
 		}
 		scene.ready();
 	}
@@ -3852,7 +3813,12 @@ Util.Objects["products"] = new function() {
 			node._variant = u.cv(node, "variant");
 			node._format = u.cv(node, "format");
 			node._image = u.ie(node, "div", {"class":"image"});
-			u.ae(node._image, "img", {"src":"/images/"+node._item_id+"/"+node._variant+"/480x480."+node._format});
+			if(node._format && node._variant && node._item_id) {
+				u.ae(node._image, "img", {"src":"/images/"+node._item_id+"/"+node._variant+"/480x480."+node._format});
+			}
+			else {
+				u.ae(node._image, "img", {"src":"/images/0/missing/480x480.png"});
+			}
 		}
 	}
 }

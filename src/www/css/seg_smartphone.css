@@ -110,18 +110,19 @@ dd {display: inline-block; vertical-align: top; font-size: 13px; line-height: 1.
 
 /*s-pages.css*/
 #content .scene.front {}
-#content .scene.front ul.clients {border-top: 1px solid #911b1b; border-bottom: 1px solid #911b1b; margin-top: -50px; padding: 0; margin-bottom: 50px;}
-#content .scene.front ul.clients li {display: inline-block; vertical-align: top; padding: 10px 20px; font-size: 14px; color: #911b1b;}
-#content .scene.front ul.clients li.selected {color: #ffffff; background: #911b1b;}
-#content .scene.front div.client {display: none;}
+#content .scene.front ul.clients {border-top: 1px solid #911b1b; margin-top: -50px; padding: 0; margin-bottom: 50px;}
+#content .scene.front ul.clients li {display: block; border-bottom: 1px solid #911b1b;}
+#content .scene.front ul.clients li a {display: block; padding: 10px 20px; font-size: 14px; color: #911b1b;}
+#content .scene.front ul.clients li a:active {background-color: #b25f5f; color: #ffffff; }
+#content .scene.front ul.clients li.selected a {color: #ffffff; background: #911b1b;}
 #content .scene.front div.article {padding-bottom: 20px;}
 #content .scene.front div.article ul.info {display: none;}
 #content .scene.front div.contexts {padding-bottom: 20px;}
 #content .scene.front div.contexts ul.contexts {display: block;}
 #content .scene.front div.contexts ul.context_options {padding: 0;}
-#content .scene.front div.contexts ul.context_options li {display: inline-block; padding: 6px 12px; border: 1px solid #911b1b; margin: 3px 3px 3px 0;}
-#content .scene.front div.contexts ul.context_options li.selected {background-color: #911b1b;}
-#content .scene.front div.contexts ul.context_options li.selected a {color: #ffffff;}
+#content .scene.front div.contexts ul.context_options li {display: inline-block; vertical-align: top; margin: 3px 3px 3px 0;}
+#content .scene.front div.contexts ul.context_options li a {padding: 6px 12px; display: block; border: 1px solid #911b1b;}
+#content .scene.front div.contexts ul.context_options li.selected a {color: #ffffff; background-color: #911b1b;}
 #content .scene.front div.products div.filter li {cursor: pointer;}
 #content .scene.front div.products div.filter li.selected {color: #911b1b;}
 #content .scene.front div.products ul.products {}

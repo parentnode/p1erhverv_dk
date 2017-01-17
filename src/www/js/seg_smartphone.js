@@ -3671,15 +3671,6 @@ Util.insertElement = u.ie = function(_parent, node_type, attributes) {
 	}
 	return false;
 }
-Util.insertAfter = u.ia = function(after_node, insert_node) {
-	var next_node = u.ns(after_node);
-	if(next_node) {
-		after_node.parentNode.insertBefore(next_node, insert_node);
-	}
-	else {
-		after_node.parentNode.appendChild(insert_node);
-	}
-}
 Util.wrapElement = u.we = function(node, node_type, attributes) {
 	try {
 		var wrapper_node = node.parentNode.insertBefore(document.createElement(node_type), node);
@@ -3894,6 +3885,15 @@ Util.hasFixedParent = u.hfp = function(node) {
 	}
 	return false;
 }
+Util.insertAfter = u.ia = function(after_node, insert_node) {
+	var next_node = u.ns(after_node);
+	if(next_node) {
+		after_node.parentNode.insertBefore(next_node, insert_node);
+	}
+	else {
+		after_node.parentNode.appendChild(insert_node);
+	}
+}
 Util.selectText = function(node) {
 	var selection = window.getSelection();
 	var range = document.createRange();
@@ -3984,40 +3984,7 @@ Util.Objects["front"] = new function() {
 		}
 		scene.ready = function() {
 			page.cN.scene = this;
-			this.client_tabs = u.qsa("ul.clients li", this);
-			if(this.client_tabs.length) {
-				var i, tab;
-				for(i = 0; tab = this.client_tabs[i]; i++) {
-					tab.scene = this;
-					tab.pane = u.qs("#" + tab.getAttribute("data-tab"));
-					tab.pane.scene = this;
-					tab.pane.tab = tab;
-					u.ce(tab);
-					tab.clicked = function() {
-						this.scene.selectTab(this);
-					}
-				}
-				this.selectTab = function(selected_tab) {
-					var i, tab;
-					for(i = 0; tab = this.client_tabs[i]; i++) {
-						u.rc(tab, "selected");
-						u.ass(tab.pane, {
-							"display":"none"
-						})
-					}
-					u.ac(selected_tab, "selected");
-					u.ass(selected_tab.pane, {
-						"display":"block"
-					})
-				}
-				this.selectTab(this.client_tabs[0]);
-			}
-			else {
-				var first_client = u.qs("div.client", this);
-				u.ass(first_client, {
-					"display":"block"
-				})
-			}
+			// 	
 		}
 		scene.ready();
 	}

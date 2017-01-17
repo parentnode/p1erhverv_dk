@@ -6,11 +6,27 @@
 /*s-fonts.css*/
 @font-face {
 	font-family: 'OpenSans';
-	src: url('/janitor/admin/fonts/opensans-regular-webfont.woff') format('woff'),
-		 url('/janitor/admin/fonts/opensans-regular-webfont.ttf') format('truetype'),
-		 url('/janitor/admin/fonts/opensans-regular-webfont.svg#OpenSansRegular') format('svg');
+	src: url('/janitor/admin/css/fonts/opensans-regular-webfont.woff') format('woff'),
+		 url('/janitor/admin/css/fonts/opensans-regular-webfont.ttf') format('truetype'),
+		 url('/janitor/admin/css/fonts/opensans-regular-webfont.svg#OpenSansRegular') format('svg');
 	font-weight: normal;
 	font-style: normal;
+}
+@font-face {
+	font-family: 'OpenSans';
+	src: url('/janitor/admin/css/fonts/opensans-bold-webfont.woff') format('woff'),
+		 url('/janitor/admin/css/fonts/opensans-bold-webfont.ttf') format('truetype'),
+		 url('/janitor/admin/css/fonts/opensans-bold-webfont.svg#open_sansbold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'OpenSans';
+	src: url('/janitor/admin/css/fonts/opensans-italic-webfont.woff') format('woff'),
+		 url('/janitor/admin/css/fonts/opensans-italic-webfont.ttf') format('truetype'),
+		 url('/janitor/admin/css/fonts/opensans-italic-webfont.svg#open_sansitalic') format('svg');
+	font-weight: normal;
+	font-style: italic;
 }
 
 
@@ -346,6 +362,15 @@ iframe#geolocationmap {width: 300px; height: 300px; position: absolute; top: 0; 
 	background: #dedede url(/janitor/admin/img/bg_icons.png) no-repeat 8px -42px;
 }
 #content .field.html .editor div.tag:hover .remove {display: block;}
+#content .field.html .editor div.tag:hover .remove {display: block;}
+#content .field.html .editor div.tag .classname {display: none; position: absolute; top: 0px; right: -45px; border-radius: 15px; background: #dedede; width: 30px; height: 30px; cursor: pointer;}
+#content .field.html .editor div.tag .classname.open {width: auto; display: block;}
+#content .field.html .editor div.tag .classname span {display: inline-block; vertical-align: top; font-size: 10px; padding-top: 8px; padding-left: 6px;}
+#content .field.html .editor div.tag .classname form {margin: 0; display: inline-block; vertical-align: top;}
+#content .field.html .editor div.tag .classname form .field {padding: 0 12px 0 3px;}
+#content .field.html .editor div.tag .classname form .field input {height: 20px; width: 100px;}
+#content .field.html .editor div.tag .classname form .field.focus input {border: 1px solid #dedede; margin: 2px;}
+#content .field.html .editor div.tag:hover .classname {display: block;}
 #content .field.html .editor div.tag ul.type {display: block; z-index: 5; position: absolute; width: 30px; top: 0px; left: 0px; padding: 0;}
 #content .field.html .editor div.tag ul.type li {display: none; text-transform: uppercase; padding: 9px 4px; text-align: center; font-size: 11px; cursor: default;}
 #content .field.html .editor div.tag ul.type.clickable li {cursor: pointer;}
@@ -359,7 +384,8 @@ iframe#geolocationmap {width: 300px; height: 300px; position: absolute; top: 0; 
 #content .field.html .editor div.tag div.text {display: inline-block; vertical-align: top; width: 334px; height: auto; padding: 4px 6px; line-height: 1.375em; border-radius: 3px; background-color: #F5F7F8; color: #333333; box-shadow: inset 0 1px 2px #dedede; background: #ffffff; border: 1px solid #dcdcdc; min-height: 20px;}
 #content .field.html .editor div.tag div.text em,
 #content .field.html .editor div.tag div.text strong,
-#content .field.html .editor div.tag div.text a {background-color: rgba(255, 0, 0, 0.3); cursor: default; font-size: inherit;}
+#content .field.html .editor div.tag div.text a,
+#content .field.html .editor div.tag div.text span {background-color: rgba(255, 0, 0, 0.3); cursor: default; font-size: inherit;}
 #content .field.html .editor div.tag.focus {background-color: #5c5c5c; padding: 0 0 0 30px; border: 2px solid #5c5c5c;}
 #content .field.html .editor div.tag.focus div.text {border-color: #5c5c5c;}
 #content .field.html .editor div.tag.focus .drag {background-color: #5c5c5c; top: -2px;}
@@ -379,7 +405,8 @@ iframe#geolocationmap {width: 300px; height: 300px; position: absolute; top: 0; 
 #content .field.html .editor div.tag.file .text label.done {text-align: left; color: #333333;}
 #content .field.html .editor div.tag.file input {width: 316px; opacity: 0; height: 18px; position: relative; z-index: 2;}
 body #selection_options {z-index: 1100; position: absolute; background-color: #F5F7F8; border: 3px solid #5c5c5c; margin: 0px 0 0 10px; padding: 15px; border-radius: 5px;}
-body #selection_options h3 {padding: 10px 0 10px; text-align: left; font-size: 13px; margin-top: 10px; border-top: 1px solid #5c5c5c;}
+body #selection_options h3 {padding: 0 0 10px; text-align: left; font-size: 13px;}
+body #selection_options ul.options + form {margin-top: 10px; border-top: 1px solid #5c5c5c; padding-top: 10px;}
 body #selection_options li {display: block; font-size: 13px; padding: 5px 0; cursor: pointer;}
 body #selection_options li.link {text-decoration: underline;}
 body #selection_options li.em {font-style: italic;}
@@ -387,8 +414,8 @@ body #selection_options li.strong {font-weight: 700;}
 body #selection_options .field {margin-left: -2px;}
 body #selection_options .field label {display: none;}
 body #selection_options .field input {color: #333333; box-shadow: inset 0 1px 2px #dedede; background: #ffffff; border: 1px solid #dcdcdc; display: inline-block; vertical-align: top; border-radius: 3px; margin: 2px; outline: none; position: relative; z-index: 10; width: 150px; height: 24px; padding: 2px 6px;}
-body #selection_options .field.checkbox input {width: auto;}
-body #selection_options .field.checkbox label {display: inline-block; vertical-align: top; padding: 4px 0 0 3px;}
+body #selection_options .field.checkbox input {width: auto; height: auto; margin-top: 5px;}
+body #selection_options .field.checkbox label {display: inline-block; vertical-align: top; padding: 5px 0 0 3px;}
 body #selection_options .field input.default {color: #cccccc;}
 body #selection_options .field input.focus {}
 body #selection_options ul.actions {padding: 10px 0 0;}
@@ -403,6 +430,7 @@ body #selection_options ul.actions a.button {background-color: #8c9399; color: #
 body #selection_options ul.actions input.button:hover,
 body #selection_options ul.actions a.button:hover {background-color: #313942;}
 .delete_selection {position: absolute; z-index: 1150; top: 0; left: 0; border-radius: 8px; width: 14px; height: 14px; font-size: 10px; line-height: 14px; text-align: center; background: #ffffff; border: 1px solid #000000; cursor: pointer;}
+.edit_selection {position: absolute; z-index: 1150; top: 0; left: 0; border-radius: 8px; width: 14px; height: 14px; font-size: 10px; line-height: 14px; text-align: center; background: #ffffff; border: 1px solid #000000; cursor: pointer;}
 
 
 /*s-notifications.css*/
@@ -470,8 +498,8 @@ body #selection_options ul.actions a.button:hover {background-color: #313942;}
 #content .defaultEdit.shopView div.all_items {border-top: 1px solid #bbbbbb; padding-bottom: 40px;}
 #content .defaultEdit.shopView div.all_items > ul.actions {padding-top: 10px;}
 #content .defaultEdit.shopView div.all_items > ul.actions li {padding-bottom: 0px;}
-#content .defaultEdit.shopView ul.items li h3 {overflow: hidden; padding-right: 30px; padding-top: 6px; padding-bottom: 6px;}
-#content .defaultEdit.shopView ul.items li h3 span {padding: 9px 5px 5px 0; display: inline-block; vertical-align: top;}
+#content .defaultEdit.shopView ul.items li h3 {font-size: 0; overflow: hidden; padding-right: 30px; padding-top: 6px; padding-bottom: 6px;}
+#content .defaultEdit.shopView ul.items li h3 span {font-size: 14px; line-height: 1em; padding: 9px 5px 5px 0; display: inline-block; vertical-align: top;}
 #content .defaultEdit.shopView ul.items li h3 span.total_price {float: right;  padding: 8px 0; display: inline-block; font-size: 16px;}
 #content .defaultEdit.shopView ul.items li h3 form {display: inline-block; vertical-align: top; position: relative;}
 #content .defaultEdit.shopView ul.items li h3 form div.field {padding: 0;}
@@ -491,7 +519,7 @@ body #selection_options ul.actions a.button:hover {background-color: #313942;}
 #content .defaultEdit.shopView ul.items li.item.shipped ul.actions li.not_shipped {display: none;}
 #content .defaultEdit.shopView ul.items li.item.shipped ul.actions li.shipped {display: inline-block;}
 #content .defaultEdit.cartView {}
-#content .defaultEdit.cartView div.all_items {padding-bottom: 20px;}
+#content .defaultEdit.cartView div.all_items {border-bottom: 1px solid #bbbbbb;}
 #content .defaultEdit.cartView ul.items li h3 {padding-right: 120px;}
 #content .defaultEdit.cartView div.order {border-top: 1px solid #bbbbbb; padding-bottom: 40px;}
 #content .defaultEdit.orderView {}
@@ -499,9 +527,9 @@ body #selection_options ul.actions a.button:hover {background-color: #313942;}
 #content .defaultEdit.orderView div.comment {border-top: 1px solid #bbbbbb; border-bottom: 1px solid #bbbbbb;}
 #content .defaultEdit.orderView div.payments {border-top: 1px solid #bbbbbb;}
 #content .defaultEdit.orderView div.payments ul.actions {padding-bottom: 10px;}
-#content .defaultEdit.orderView ul.items li.pending h3 {padding-right: 240px;}
-#content .defaultEdit.orderView ul.items li.waiting h3 {padding-right: 170px;}
-#content .defaultEdit.orderView ul.items li.complete h3 {padding-right: 160px;}
+#content .defaultEdit.orderView ul.items li.pending h3,
+#content .defaultEdit.orderView ul.items li.waiting h3,
+#content .defaultEdit.orderView ul.items li.complete h3 {padding-right: 170px;}
 #content .defaultList.paymentList ul.items > li dl.details dd.price {right: 140px;}
 
 
@@ -566,6 +594,29 @@ body #selection_options ul.actions a.button:hover {background-color: #313942;}
 #content .defaultList.userSubscriptions dd.price+dt.price+dd.price {padding-top: 0;}
 #content .defaultList.userSubscriptions dt.membership {display: none;}
 #content .defaultList.userSubscriptions dd.membership {color: #df0000; clear: left; padding-top: 5px;}
+#content .defaultList.userSubscriptions dd.payment_status.missing {color: #df0000;}
+#content .defaultView.userMembership > div > h2 {font-size: 0.8em; text-transform: uppercase; padding-top: 7px; padding-bottom: 10px; margin: 0 0 20px;}
+#content .defaultView.userMembership .item {margin-top: 20px; position: relative;}
+#content .defaultView.userMembership .item.change {border-top: 1px solid #bbbbbb;}
+#content .defaultView.userMembership .item h3 {padding-bottom: 20px; font-size: 28px;}
+#content .defaultView.userMembership dl {margin-top: -5px; overflow: hidden; padding: 0 30px 20px;}
+#content .defaultView.userMembership dt::after {content: ":\00a0";}
+#content .defaultView.userMembership dt {clear: left; float: left;}
+#content .defaultView.userMembership dd {clear: right; float: left; padding: 0 0 3px;}
+#content .defaultView.userMembership dd.price.default {text-decoration: line-through;}
+#content .defaultView.userMembership dt.price,
+#content .defaultView.userMembership dd.price {padding-top: 5px;}
+#content .defaultView.userMembership dd.price+dt.price,
+#content .defaultView.userMembership dd.price+dt.price+dd.price {padding-top: 0;}
+#content .defaultView.userMembership dt.membership {display: none;}
+#content .defaultView.userMembership dd.membership {color: #df0000; clear: left; padding-top: 5px;}
+#content .defaultView.userMembership dt.payment_method,
+#content .defaultView.userMembership dd.payment_method {padding-top: 5px;}
+#content .defaultView.userMembership dd.payment_status.missing {color: #df0000;}
+#content .defaultView.userMembership div.option {padding-bottom: 30px;}
+#content .defaultView.userMembership div.option h3 {padding-bottom: 10px; font-size: 18px;}
+#content .defaultView.userMembership div.option p {padding-bottom: 10px;}
+#content .defaultList.memberList dd.payment_status.missing {color: #df0000;}
 #content .defaultList.userContentList div.comments ul.items > li {}
 #content .scene.profileEdit div.password label {display: block; padding-left: 3px;}
 #content .scene.profileEdit div.password .indicator {top: 20px;}
@@ -616,7 +667,7 @@ body #selection_options ul.actions a.button:hover {background-color: #313942;}
 
 /*s-front.css*/
 #content .scene.front > div > h2 {font-size: 0.8em; text-transform: uppercase; padding-top: 7px; padding-bottom: 10px; margin: 0 0 20px;}
-#content .scene.front div.todos {border-bottom: 1px solid #bbbbbb; padding-bottom: 10px;}
+#content .scene.front div.todos {border-top: 1px solid #bbbbbb; padding-bottom: 10px;}
 #content .scene.front div.todos ul.todos {}
 #content .scene.front div.todos ul.todos > li.todo {position: relative; border-bottom: 1px solid #dedede; display: block; padding: 0 0 10px; margin-bottom: 10px;}
 #content .scene.front div.todos ul.todos > li.todo:last-child {border: none;}
@@ -631,13 +682,12 @@ body #selection_options ul.actions a.button:hover {background-color: #313942;}
 #content .scene.front div.todos ul.todos dd.overdue,
 #content .scene.front div.todos ul.todos dd.high {color: #df0000 !important;}
 #content .scene.front div.todos ul.todos ul.tags {padding: 0; position: absolute; right: 30px; top: 0;}
-#content .scene.front div.qnas {position: relative; border-bottom: 1px solid #bbbbbb; padding-bottom: 15px;}
+#content .scene.front div.qnas {position: relative; border-top: 1px solid #bbbbbb; padding-bottom: 15px;}
 #content .scene.front div.qnas ul.qnas {}
 #content .scene.front div.qnas ul.qnas > li.qna {position: relative; border-bottom: 1px solid #dedede; display: block; padding: 0 0 10px; margin-bottom: 10px;}
 #content .scene.front div.qnas ul.qnas > li.qna:last-child {border: none;}
 #content .scene.front div.qnas ul.qnas h3 {font-size: 14px; padding-bottom: 3px;}
-#content .scene.front div.qnas ul.qnas ul.tags {padding: 0; position: absolute; right: 30px; top: -7px;}
-
+#content .scene.front div.qnas ul.qnas p {padding-bottom: 0;}
 
 /*s-default_list.css*/
 #content div.all_items > h2,
@@ -794,11 +844,6 @@ body #selection_options ul.actions a.button:hover {background-color: #313942;}
 #content .scene.defaultEdit > div.subscription_method form .actions li {padding-left: 0;}
 #content .scene.defaultEdit > div.subscription_method form .actions li input {margin-top: 4px;}
 #content .scene.defaultEdit > div.readstates {padding: 0; border-bottom: 1px solid #bbbbbb; position: relative;}
-#content .scene.defaultEdit > div.todos {padding: 0; border-bottom: 1px solid #bbbbbb; position: relative;}
-#content .scene.defaultEdit > div.todos ul.todos {list-style: disc; list-style-position: outside; margin-left: 15px; padding: 0 0 20px 30px;}
-#content .scene.defaultEdit > div.todos ul.todos > li {display: list-item;}
-#content .scene.defaultEdit > div.todos ul.todos > li {color: #313942 !important; padding-bottom: 7px;}
-#content .scene.defaultEdit > div.todos ul.todos > li a {color: #313942 !important;}
 #content .scene.defaultEdit > div.qnas {padding: 0; border-bottom: 1px solid #bbbbbb; position: relative;}
 #content .scene.defaultEdit > div.qnas ul.qnas {}
 #content .scene.defaultEdit > div.qnas ul.qnas > li ul.info {padding: 0 30px 0px;}
@@ -836,13 +881,14 @@ body #selection_options ul.actions a.button:hover {background-color: #313942;}
 #content .scene.todoList ul.items > li dt {color: #313942;}
 #content .scene.todoList ul.items > li dd.overdue,
 #content .scene.todoList ul.items > li dd.high {color: #df0000;}
-#content .qnaList ul.items > li p {padding-bottom: 0px; padding-right: 220px;}
 #content .scene.wishList div.item {padding: 0 0 20px; border-bottom: 1px solid #aaaaaa;}
 #content .scene.wishList > div > h2 {font-size: 0.8em; text-transform: uppercase; padding-top: 7px; padding-bottom: 10px; margin: 0 0 20px;}
 #content .scene.wishList div.wishlists {padding: 0 0 50px; border-bottom: 1px solid #aaaaaa;}
 #content .scene.wishList ul.items > li dl dt.reserved {display: none;}
 #content .scene.wishList ul.items > li dl dd.reserved {font-size: 14px;}
 #content .scene.eventList ul.items > li.past {background: #dddddd;}
+#content .scene.cacheList div.details {display: none;}
+#content .scene.cacheList li.show div.details {display: block;}
 
 
 /*s-content.css*/
