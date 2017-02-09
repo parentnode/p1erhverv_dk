@@ -3,8 +3,8 @@
 #content ul.actions input.button.primary:hover,
 #content ul.actions a.button.primary:hover {background-color: #b25f5f;}
 
-#content .scene.front ul.clients li:hover a {background-color: #b25f5f; color: #ffffff;}
-#content .scene.front ul.clients li.selected:hover a {background-color: #911b1b;}
+#content .scene.front ul.clients li:hover a {background-color: rgba(145, 27, 27, 0.5); color: #ffffff;}
+#content .scene.front ul.clients li.selected:hover a {background-color: rgba(145, 27, 27, 0.6);}
 
-#content .scene.front div.contexts ul.context_options li:hover a {background-color: #b25f5f; color: #ffffff;}
-#content .scene.front div.contexts ul.context_options li.selected:hover a {background-color: #911b1b;}
+#content .scene.front div.contexts ul.context_options li:hover a {background-color: rgba(145, 27, 27, 0.5); color: #ffffff;}
+#content .scene.front div.contexts ul.context_options li.selected:hover a {background-color: rgba(145, 27, 27, 0.6);}

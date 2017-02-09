@@ -3655,6 +3655,23 @@ Util.Objects["page"] = new function() {
 			}
 		}
 		page.scrolled = function() {
+			page.scroll_y = u.scrollY();
+			if(page.bn_order) {
+				if(page.scroll_y > 46) {
+					u.ass(page.bn_order, {
+						"top": "-3px",
+						"right":(((page.browser_w - page.offsetWidth) / 2) + 20) + "px",
+						"position":"fixed"
+					}, false);
+				}
+				else {
+					u.ass(page.bn_order, {
+						"top": "43px",
+						"right": 0,
+						"position":"absolute"
+					}, false);
+				}
+			}
 			if(page.cN && page.cN.scene && typeof(page.cN.scene.scrolled) == "function") {
 				page.cN.scene.scrolled();
 			}
@@ -3670,6 +3687,7 @@ Util.Objects["page"] = new function() {
 			}
 		}
 		page.initHeader = function() {
+			page.bn_order = u.qs("li.order", page.hN);
 		}
 		page.ready();
 	}
@@ -3736,7 +3754,7 @@ Util.Objects["products"] = new function() {
 			div._filter.div = div;
 			div._filter.checkTags = function(node) {
 				if(this.selected_tag) {
-					var regex = new RegExp("(^|\b)"+this.selected_tag, "g");
+					var regex = new RegExp("(^|\b|;)"+this.selected_tag, "g");
 					u.bug(node._c);
 					u.bug(node._c.match(regex));
 					if(!node._c.match(regex)) {
@@ -3818,6 +3836,9 @@ Util.Objects["products"] = new function() {
 			}
 			else {
 				u.ae(node._image, "img", {"src":"/images/0/missing/480x480.png"});
+			}
+			if(u.hc(node, "instant")) {
+				u.ae(node._image, "div", {"class":"banner", "html":"Straks-levering"});
 			}
 		}
 	}

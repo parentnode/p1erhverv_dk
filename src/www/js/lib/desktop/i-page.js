@@ -48,6 +48,26 @@ Util.Objects["page"] = new function() {
 		page.scrolled = function() {
 //			u.bug("page.scrolled:" + u.nodeId(this))
 
+			page.scroll_y = u.scrollY();
+			if(page.bn_order) {
+				if(page.scroll_y > 46) {
+					u.ass(page.bn_order, {
+						"top": "-3px",
+						"right":(((page.browser_w - page.offsetWidth) / 2) + 20) + "px",
+						"position":"fixed"
+					}, false);
+				}
+				else {
+
+					u.ass(page.bn_order, {
+						"top": "43px",
+						"right": 0,
+						"position":"absolute"
+					}, false);
+				}
+			}
+			
+
 			// forward scroll event to current scene
 			if(page.cN && page.cN.scene && typeof(page.cN.scene.scrolled) == "function") {
 				page.cN.scene.scrolled();
@@ -83,6 +103,8 @@ Util.Objects["page"] = new function() {
 		// initialize header
 		page.initHeader = function() {
 
+			// is there an order button
+			page.bn_order = u.qs("li.order", page.hN);
 
 		}
 

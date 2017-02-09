@@ -14,8 +14,9 @@ Util.Objects["products"] = new function() {
 			div._filter.checkTags = function(node) {
 
 				if(this.selected_tag) {
+//					u.bug("checkTags selected_tag:" + this.selected_tag);
 
-					var regex = new RegExp("(^|\b)"+this.selected_tag, "g");
+					var regex = new RegExp("(^|\b|;)"+this.selected_tag, "g");
 					u.bug(node._c);
 					u.bug(node._c.match(regex));
 					if(!node._c.match(regex)) {
@@ -129,6 +130,11 @@ Util.Objects["products"] = new function() {
 			}
 			else {
 				u.ae(node._image, "img", {"src":"/images/0/missing/480x480.png"});
+			}
+
+
+			if(u.hc(node, "instant")) {
+				u.ae(node._image, "div", {"class":"banner", "html":"Straks-levering"});
 			}
 
 //			u.ce(node, {"type":"link"});
