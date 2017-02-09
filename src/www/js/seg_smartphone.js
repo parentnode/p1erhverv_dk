@@ -4034,7 +4034,7 @@ Util.Objects["products"] = new function() {
 			div._filter.div = div;
 			div._filter.checkTags = function(node) {
 				if(this.selected_tag) {
-					var regex = new RegExp("(^|\b)"+this.selected_tag, "g");
+					var regex = new RegExp("(^|\b|;)"+this.selected_tag, "g");
 					u.bug(node._c);
 					u.bug(node._c.match(regex));
 					if(!node._c.match(regex)) {
@@ -4111,7 +4111,12 @@ Util.Objects["products"] = new function() {
 			node._variant = u.cv(node, "variant");
 			node._format = u.cv(node, "format");
 			node._image = u.ie(node, "div", {"class":"image"});
-			u.ae(node._image, "img", {"src":"/images/"+node._item_id+"/"+node._variant+"/480x480."+node._format});
+			if(node._format && node._variant && node._item_id) {
+				u.ae(node._image, "img", {"src":"/images/"+node._item_id+"/"+node._variant+"/480x480."+node._format});
+			}
+			else {
+				u.ae(node._image, "img", {"src":"/images/0/missing/480x480.png"});
+			}
 		}
 	}
 }
