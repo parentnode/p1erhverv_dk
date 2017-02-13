@@ -182,8 +182,7 @@ if($client_id) {
 		<div class="products i:products">
 			<h2>Produkter</h2>
 			<ul class="items products">
-			<? foreach($items as $item):
-				 $media = $IC->sliceMedia($item); ?>
+			<? foreach($items as $item): ?>
 				<li class="item product id:<?= $item["item_id"] ?><?= $JML->jsMedia($item) ?><?= ($client["instant_delivery"] && arrayKeyValue($item["tags"], "value", "Strakslevering") !== false) ? " instant" : "" ?>" itemscope itemtype="http://schema.org/Product">
 
 					<ul class="tags">
@@ -214,10 +213,10 @@ if($client_id) {
 							</ul>
 						</li>
 						<li class="image_info" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-						<? if($media): ?>
-							<span class="image_url" itemprop="url" content="<?= SITE_URL ?>/images/<?= $item["item_id"] ?>/<?= $media["variant"] ?>/720x.<?= $media["format"] ?>"></span>
+						<? if($item["mediae"]): ?>
+							<span class="image_url" itemprop="url" content="<?= SITE_URL ?>/images/<?= $item["item_id"] ?>/<?= $item["mediae"][0]["variant"] ?>/720x.<?= $item["mediae"][0]["format"] ?>"></span>
 							<span class="image_width" itemprop="width" content="720"></span>
-							<span class="image_height" itemprop="height" content="<?= floor(720 / ($media["width"] / $media["height"])) ?>"></span>
+							<span class="image_height" itemprop="height" content="<?= floor(720 / ($item["mediae"][0]["width"] / $item["mediae"][0]["height"])) ?>"></span>
 						<? else: ?>
 							<span class="image_url" itemprop="url" content="<?= SITE_URL ?>/img/logo-large.png"></span>
 							<span class="image_width" itemprop="width" content="720"></span>
