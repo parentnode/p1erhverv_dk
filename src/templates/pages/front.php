@@ -100,10 +100,18 @@ if($client_id) {
 
 			<h1><?= $client["name"] ?></h1>
 
+
 			<? if($client["html"]): ?>
 			<div class="articlebody">
 				<?= $client["html"] ?>
 			</div>
+			<? endif; ?>
+
+
+			<? if($client["buy_button"]): ?>
+			<ul class="actions">
+				<li class="buy"><a href="mailto:sl@punkt1.dk?subject=Rekvisition:%20[Anfør%20nummer%20her]&body=Bestilling%20modtaget%20fra%20www.p1erhverv.dk%0D%0A%0D%0AVedhæft%20rekvisition%20–%20og%20send.">Bestil nu</a></li>
+			</ul>
 			<? endif; ?>
 		</div>
 
@@ -112,7 +120,7 @@ if($client_id) {
 		if($client_contexts):
 		?>
 		<div class="contexts">
-			<h2>Vælg mærke og sortiment</h2>
+			<h2>Filtrér sortiment</h2>
 			<ul class="contexts">
 			<?
 			// loop through contexts
@@ -174,13 +182,14 @@ if($client_id) {
 		<div class="products i:products">
 			<h2>Produkter</h2>
 			<ul class="items products">
-			<? foreach($items as $item): ?>
-				<li class="item product id:<?= $item["item_id"] ?><?= $JML->jsMedia($item) ?><?= arrayKeyValue($item["tags"], "value", "Strakslevering") !== false ? " instant" : "" ?>" itemscope itemtype="http://schema.org/Product">
+			<? foreach($items as $item):
+				 $media = $IC->sliceMedia($item); ?>
+				<li class="item product id:<?= $item["item_id"] ?><?= $JML->jsMedia($item) ?><?= ($client["instant_delivery"] && arrayKeyValue($item["tags"], "value", "Strakslevering") !== false) ? " instant" : "" ?>" itemscope itemtype="http://schema.org/Product">
 
 					<ul class="tags">
 					<? if($item["tags"]): ?>
 						<? foreach($item["tags"] as $item_tag): ?>
-							<? if($item_tag["context"] == "category"): ?>
+							<? if($item_tag["context"] == "category" && ($client["instant_delivery"] || $item_tag["value"] != "Strakslevering")): ?>
 						<li itemprop="category" class="tag"><?= $item_tag["value"] ?></li>
 							<? endif; ?>
 						<? endforeach; ?>

@@ -12,7 +12,4 @@
 #header .servicenavigation li:after {content: "\00a0\00a0|\00a0\00a0";}
 #header .servicenavigation li.user:after {content: "";}
 
-#header .servicenavigation li.order {z-index: 30; position: absolute; top: 43px; right: 0px;}
-#header .servicenavigation li.order a {display: block; padding: 7px 15px; white-space: nowrap; font-size: 16px; line-height: 1.2em; background-color: #911b1b; color: #ffffff; border: none; cursor: pointer; border-radius: 3px;}
-#header .servicenavigation li.order:after {content: "";}
 

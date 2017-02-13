@@ -6,6 +6,9 @@ CREATE TABLE `SITE_DB`.`item_client` (
   `html` text NOT NULL,
   `secret_url_token` varchar(100) NOT NULL,  
 
+  `buy_button` int(11) NOT NULL,
+  `instant_delivery` int(11) NOT NULL,
+
   `position` int(11) DEFAULT '0',
 
   PRIMARY KEY  (`id`),

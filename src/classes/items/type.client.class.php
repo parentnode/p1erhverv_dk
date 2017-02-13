@@ -46,6 +46,23 @@ class TypeClient extends Itemtype {
 			"error_message" => "Token must be filled out"
 		));
 
+
+		// buy button
+		$this->addToModel("buy_button", array(
+			"type" => "string",
+			"label" => "Buy button",
+			"hint_message" => "Should this client have a buy button?", 
+			"error_message" => "Should be true or false"
+		));
+
+		// buy button
+		$this->addToModel("instant_delivery", array(
+			"type" => "string",
+			"label" => "Instant delivery",
+			"hint_message" => "Should this client offer instant delivery by using the category:Strakslevering tag?", 
+			"error_message" => "Should be true or false"
+		));
+
 	}
 
 

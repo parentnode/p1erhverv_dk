@@ -51,12 +51,17 @@ Util.Objects["products"] = new function() {
 
 
 			var i, node, tag, li, used_tags = [];
+			var instant_delivery = false;
+
 			div._filter._tags = u.ie(div._filter, "ul", {"class":"tags"});
 
 			for(i = 0; node = tags[i]; i++) {
 
 				tag = u.text(node);
-				if(used_tags.indexOf(tag) == -1) {
+				if(tag == "Strakslevering") {
+					instant_delivery = true;
+				}
+				else if(used_tags.indexOf(tag) == -1) {
 					used_tags.push(tag);
 				}
 
@@ -79,6 +84,25 @@ Util.Objects["products"] = new function() {
 
 				// update list filtering
 				this._filter.filterItems();
+			}
+
+			if(instant_delivery) {
+				li = u.ae(div._filter._tags, "li", {"html":"Strakslevering", "class":"instant"});
+				li._filter = div._filter;
+				u.e.click(li);
+				li.clicked = function(event) {
+					this._filter.selected_tag = "strakslevering";
+
+					var i, node;
+					for(i = 0; node = this._filter.tags[i]; i++) {
+						u.rc(node, "selected");
+					}
+
+					u.ac(this, "selected");
+
+					// update list filtering
+					this._filter.filterItems();
+				}
 			}
 
 			for(i = 0; tag = used_tags[i]; i++) {

@@ -34,7 +34,6 @@
 <?		if(session()->value("user_id") && session()->value("user_group_id") > 1): ?>
 			<?= $HTML->link("Janitor", "/janitor", array("wrapper" => "li.keynav.admin.nofollow")); ?>
 			<li class="keynav user nofollow"><a href="?logoff=true">Logoff</a></li>
-			<li class="keynav order nofollow"><a href="mailto:sl@punkt1.dk?subject=Rekvisition:%20[Anfør%20nummer%20her]&body=Bestilling%20fra%20p1erhverv.dk%0D%0A%0D%0AVedhæft%20rekvisition%20–%20og%20send.%20Så%20vender%20vi%20tilbage%20med%20en%20bekræftelse%20hurtigst%20muligt.">Bestil nu</a></li>
 <?		else: ?>
 			<li class="keynav user nofollow"><a href="/login">Login</a></li>
 <?		endif; ?>

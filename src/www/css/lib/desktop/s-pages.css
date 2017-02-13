@@ -12,12 +12,18 @@
 }
 #content .scene.front ul.clients li {display: inline-block; vertical-align: top; height: 36px;}
 #content .scene.front ul.clients li a {display: block; padding: 10px 20px; font-size: 14px; color: #911b1b; cursor: pointer;}
-#content .scene.front ul.clients li.selected a {color: #ffffff; background: rgba(145, 27, 27, 0.6);}
+#content .scene.front ul.clients li.selected a {color: #ffffff; background: #911b1b;}
+
+
 
 /*#content .scene.front div.client {display: none;}*/
 
 #content .scene.front div.article {padding-bottom: 20px;}
 #content .scene.front div.article ul.info {display: none;}
+
+#content .scene.front div.article ul.actions li.buy {/*z-index: 30; position: absolute; top: 43px; left: 0px;*/}
+#content .scene.front div.article ul.actions li.buy a {display: block; padding: 7px 15px; white-space: nowrap; font-size: 16px; line-height: 1.2em; background-color: #1C963E; color: #ffffff; border: none; cursor: pointer; border-radius: 3px;}
+
 
 #content .scene.front div.contexts {padding-bottom: 20px;}
 #content .scene.front div.contexts ul.contexts {display: block;}
@@ -25,10 +31,12 @@
 #content .scene.front div.contexts ul.context_options {padding: 0;}
 #content .scene.front div.contexts ul.context_options li {display: inline-block; border: 1px solid #911b1b; margin: 3px 3px 3px 0;}
 #content .scene.front div.contexts ul.context_options li a {padding: 6px 12px; display: block;}
-#content .scene.front div.contexts ul.context_options li.selected a {background-color: rgba(145, 27, 27, 0.6); color: #ffffff;}
+#content .scene.front div.contexts ul.context_options li.selected a {background-color: #911b1b; color: #ffffff;}
 
 #content .scene.front div.products div.filter li {cursor: pointer;}
 #content .scene.front div.products div.filter li.selected {color: #911b1b;}
+#content .scene.front div.products div.filter li.instant:after {content: "\00a0–\00a0";}
+
 
 #content .scene.front div.products ul.products {}
 #content .scene.front div.products ul.products li.product {width: 33.333%; box-sizing: border-box; display: inline-block; vertical-align: top;}
