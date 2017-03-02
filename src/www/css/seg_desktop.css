@@ -72,10 +72,20 @@ body.fixed #page {width: 960px;}
 @media print {
 	#header .servicenavigation {display: none;}
 	#navigation {display: none;}
-	#footer {display: none;}
 	#content .scene ul.clients {display: none;}
+	#content .scene div.article {display: none;}
+	#content .scene div.contexts h2 {display: none;}
+	#content .scene div.contexts ul.contexts,
+	#content .scene div.contexts ul.contexts li.context,
+	#content .scene div.contexts ul.contexts li.context ul.context_options {display: inline-block;}
+	#content .scene div.contexts ul.contexts li.context ul.context_options li.context {display: none;}
+	#content .scene div.contexts ul.contexts li.context ul.context_options li.context.selected {display: inline-block;}
+	#content .scene div.products div.filter ul.tags li {display: none;}
+	#content .scene div.products div.filter ul.tags li.selected {display: inline-block;}
+	#content .scene div.products div.filter ul.tags li.selected:after {content: "";}
 	#content .scene p {color: #000000;}
 }
+
 
 /*s-header.css*/
 #header {overflow: hidden; height: 124px; border-bottom: 1px solid #f3f3f3; position: relative; height: 100px;}
