@@ -11,6 +11,7 @@
 
 #content .scene.front div.article {padding-bottom: 20px;}
 #content .scene.front div.article ul.info {display: none;}
+#content .scene.front div.article div.articlebody a {text-decoration: underline;}
 
 #content .scene.front div.contexts {padding-bottom: 20px;}
 #content .scene.front div.contexts ul.contexts {display: block;}

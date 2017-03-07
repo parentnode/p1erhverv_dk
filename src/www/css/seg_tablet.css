@@ -140,6 +140,7 @@ body.fixed #page {width: 960px;}
 #content .scene.front ul.clients li.selected a {color: #ffffff; background: #911b1b;}
 #content .scene.front div.article {padding-bottom: 20px;}
 #content .scene.front div.article ul.info {display: none;}
+#content .scene.front div.article div.articlebody a {text-decoration: underline;}
 #content .scene.front div.article ul.actions li.buy {}
 #content .scene.front div.article ul.actions li.buy a {display: block; padding: 7px 15px; white-space: nowrap; font-size: 16px; line-height: 1.2em; background-color: #1C963E; color: #ffffff; border: none; cursor: pointer; border-radius: 3px;}
 #content .scene.front div.contexts {padding-bottom: 20px;}
