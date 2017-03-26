@@ -51,7 +51,7 @@ class TypeProduct extends Itemtype {
 		$this->addToModel("price", array(
 			"type" => "string",
 			"label" => "Price (only shown if selected for client)",
-			"hint_message" => "State the price incl. currency."
+			"hint_message" => "State the price incl. currency – like: DKK 2.345,-."
 		));
 
 
