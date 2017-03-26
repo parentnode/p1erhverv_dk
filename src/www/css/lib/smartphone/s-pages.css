@@ -33,6 +33,11 @@
 #content .scene.front div.products ul.products li.product ul.tags,
 #content .scene.front div.products ul.products li.product ul.info {display: none;}
 
+#content .scene.front div.products ul.products li.product div.price {}
+#content .scene.front div.products ul.products li.product div.price dl {display: inline-block; vertical-align: top; padding: 10px 20px 20px; text-align: left;}
+#content .scene.front div.products ul.products li.product div.price dl dt {font-size: 10px; text-transform: uppercase; display: block; line-height: 1em;}
+#content .scene.front div.products ul.products li.product div.price dl dd {font-size: 24px; display: block;}
+
 
 
 /* PRODUCT */

@@ -197,6 +197,15 @@ if($client_id) {
 
 					<h3 itemprop="headline"><?= $item["name"] ?></h3>
 
+					<? if($client["show_price"] && $item["price"]): ?>
+					<div class="price">
+						<dl>
+							<dt>Pris</dt>
+							<dd><?= $item["price"] ?></dd>
+						</dl>
+					</div>
+					<? endif; ?>
+
 					<ul class="info">
 						<li class="published_at" itemprop="datePublished" content="<?= date("Y-m-d", strtotime($item["published_at"])) ?>"><?= date("Y-m-d, H:i", strtotime($item["published_at"])) ?></li>
 						<li class="modified_at" itemprop="dateModified" content="<?= date("Y-m-d", strtotime($item["modified_at"])) ?>"><?= date("Y-m-d, H:i", strtotime($item["published_at"])) ?></li>

@@ -20,6 +20,7 @@ $item = $IC->getItem(array("id" => $item_id, "extend" => array("tags" => true, "
 				<?= $model->input("name", array("value" => $item["name"])) ?>
 				<?= $model->input("description", array("class" => "autoexpand", "value" => $item["description"])) ?>
 				<?= $model->input("ean", array("value" => $item["ean"])) ?>
+				<?= $model->input("price", array("value" => $item["price"])) ?>
 				<?= $model->inputHTML("html", array("value" => $item["html"])) ?>
 			</fieldset>
 

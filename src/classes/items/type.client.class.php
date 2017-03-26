@@ -63,6 +63,14 @@ class TypeClient extends Itemtype {
 			"error_message" => "Should be true or false"
 		));
 
+		// buy button
+		$this->addToModel("show_price", array(
+			"type" => "string",
+			"label" => "Show price",
+			"hint_message" => "Should prices be shown for this client?", 
+			"error_message" => "Should be true or false"
+		));
+
 	}
 
 

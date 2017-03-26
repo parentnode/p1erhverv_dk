@@ -34,6 +34,12 @@ class TypeProduct extends Itemtype {
 			"hint_message" => "Write a meaningful description of the product. Remember product descriptions are very important for Google - Make sure to use varied language and include all relevant keywords in your description."
 		));
 
+		// HTML
+		$this->addToModel("html", array(
+			"allowed_tags" => "p,h3,h4,download",
+			"required" => true,
+		));
+
 		// EAN
 		$this->addToModel("ean", array(
 			"type" => "string",
@@ -41,11 +47,13 @@ class TypeProduct extends Itemtype {
 			"hint_message" => "European Article Number - 13 digit product identification number"
 		));
 
-		// HTML
-		$this->addToModel("html", array(
-			"allowed_tags" => "p,h3,h4,download",
-			"required" => true,
+		// Price
+		$this->addToModel("price", array(
+			"type" => "string",
+			"label" => "Price (only shown if selected for client)",
+			"hint_message" => "State the price incl. currency."
 		));
+
 
 	}
 

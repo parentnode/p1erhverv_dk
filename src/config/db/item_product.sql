@@ -6,6 +6,7 @@ CREATE TABLE `SITE_DB`.`item_product` (
   `description` text NOT NULL,
   `html` text NOT NULL,
   `ean` varchar(20),
+  `price` varchar(30),
 
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),

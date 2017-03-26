@@ -8,6 +8,7 @@ CREATE TABLE `SITE_DB`.`item_client` (
 
   `buy_button` int(11) NOT NULL,
   `instant_delivery` int(11) NOT NULL,
+  `show_price` int(11) NOT NULL,
 
   `position` int(11) DEFAULT '0',
 

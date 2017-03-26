@@ -31,6 +31,7 @@ $contexts = $model->getContexts($item_id);
 
 				<?= $model->input("buy_button", array("type" => "checkbox", "value" => $item["buy_button"])) ?>
 				<?= $model->input("instant_delivery", array("type" => "checkbox", "value" => $item["instant_delivery"])) ?>
+				<?= $model->input("show_price", array("type" => "checkbox", "value" => $item["show_price"])) ?>
 			</fieldset>
 
 			<?= $JML->editActions($item) ?>
