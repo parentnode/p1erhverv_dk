@@ -8,7 +8,7 @@ $item_id = $action[1];
 $item = $IC->getItem(array("id" => $item_id, "extend" => true));
 
 $active_items = $model->getProducts($item_id);
-$passive_items = $IC->getItems(array("itemtype" => "product", "status" => 1, "extend" => true));
+$passive_items = $IC->getItems(array("itemtype" => "product", "status" => 1, "extend" => ["tags" => true]));
 
 $users = $model->getUsers($item_id);
 $model->getContexts($item_id);
@@ -42,7 +42,7 @@ $contexts = $model->getContexts($item_id);
 	<div class="products i:collapseHeader">
 		<h2>Products</h2>
 		<p>Select which products should be visible for this client.</p>
-		<h3>Active products</h3>
+		<h3>Products for <?= $item["name"] ?></h3>
 		<div class="all_items active filters sortable i:defaultList i:activeProducts"
 		 	data-csrf-token="<?= session()->value("csrf") ?>" 
 			data-item-order="<?= $this->validPath("/janitor/client/updateProductOrder/".$item["id"]) ?>"
@@ -52,11 +52,13 @@ $contexts = $model->getContexts($item_id);
 			<? foreach($active_items as $a_item): ?>
 				<li class="item product item_id:<?= $a_item["id"] ?>">
 					<h3><?= $a_item["name"] ?></h3>
+
+					<?= $JML->tagList($a_item["tags"]) ?>
 				</li>
 			<? endforeach; ?>
 			</ul>
 		</div>
-		<h3>Passive products</h3>
+		<h3>Other available products</h3>
 		<div class="all_items inactive filters i:defaultList i:inactiveProducts"
 		 	data-csrf-token="<?= session()->value("csrf") ?>" 
 			data-item-add="<?= $this->validPath("/janitor/client/addProduct/".$item["id"]) ?>"
@@ -65,6 +67,8 @@ $contexts = $model->getContexts($item_id);
 			<? foreach($passive_items as $p_item): ?>
 				<li class="item product item_id:<?= $p_item["id"] ?><?= (arrayKeyValue($active_items, "id", $p_item["id"]) !== false) ? " active" : "" ?>">
 					<h3><?= $p_item["name"] ?></h3>
+
+					<?= $JML->tagList($p_item["tags"]) ?>
 				</li>
 			<? endforeach; ?>
 			</ul>

@@ -1,7 +1,9 @@
 #content .scene.clientEdit div.products {border-bottom: 1px solid #bbbbbb;}
 #content .scene.clientEdit div.products ul.items {padding-bottom: 25px;}
+#content .scene.clientEdit div.products ul.items ul.tags {display: none;}
 
 #content .scene.clientEdit div.products > h3 {background: #dcdcdc; padding-top: 10px;}
+#content .scene.clientEdit div.products ul.items li.active {display: none;}
 #content .scene.clientEdit div.products ul.items li.active h3 {color: #cccccc;}
 #content .scene.clientEdit div.products ul.items li.active ul.actions a,
 #content .scene.clientEdit div.products ul.items li.active ul.actions a:hover {background-color: #cccccc; cursor: default;}
