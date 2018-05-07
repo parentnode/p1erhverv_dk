@@ -8631,7 +8631,7 @@ Util.Objects["newSystemMessage"] = new function() {
 				u.rc(this, "submitting");
 				if(response.cms_status == "success") {
 					var div_receipt = u.ae(this.div, "div", {class:"receipt"});
-					u.ae(div_receipt, "p", {html:"Mail was successfully sent to:"});
+					u.ae(div_receipt, "p", {html:"Mail(s) was successfully sent to:"});
 					var ul_receipt = u.ae(div_receipt, "ul", {class:"receipt"});
 					var i;
 					for(i = 0; i < response.cms_object.length; i++) {
@@ -8652,10 +8652,34 @@ Util.Objects["sendMessage"] = new function() {
 		u.f.init(form);
 		form.div_message_form = u.qs("div.item.message form");
 		form.submitted = function(iN) {
-			if(this.fields["recipients"].val() || this.fields["maillist_id"].val()) {
+			if(this.fields["recipients"].val() || this.fields["maillist_id"].val() || this.fields["user_id"].val()) {
 				this.div_message_form.submit();
+				u.ac(this, "submitting");
 				this.response = function(response) {
+					u.rc(this, "submitting");
 					page.notify(response);
+					if(response.cms_status == "success") {
+						u.ass(this, {
+							display:"none",
+						});
+						this.div_receipt = u.ae(this.div, "div", {class:"receipt"});
+						u.ae(this.div_receipt, "p", {html:"Mail(s) was successfully sent to:"});
+						var ul_receipt = u.ae(this.div_receipt, "ul", {class:"receipt"});
+						var i;
+						for(i = 0; i < response.cms_object.length; i++) {
+							u.ae(ul_receipt, "li", {html:response.cms_object[i]})
+						}
+						var ul_actions = u.ae(this.div_receipt, "ul", {class:"actions"});
+						var action = u.f.addAction(ul_actions, {name:"send_another", value:"Send another", type:"button", class:"button"});
+						action._form = this
+						u.ce(action);
+						action.clicked = function() {
+							this._form.div_receipt.parentNode.removeChild(this._form.div_receipt);
+							u.ass(this._form, {
+								display: "block",
+							});
+						}
+					}
 				}
 				u.request(this, this.action, {"method":"post", "params" : u.f.getParams(this, {"send_as":"formdata"})});
 			}
@@ -10519,7 +10543,7 @@ Util.Objects["activeProducts"] = new function() {
 			if(node.parentNode == this.div_inactive.list) {
 				inactive_node = true;
 				node = u.ie(this.list, node.cloneNode(true));
-				node._item_id = u.cv(node, "item_id");
+				node._item_id = u.cv(node, "id");
 				node.div = this;
 				u.rc(node, "active");
 				var actions = u.qs("ul.actions", node);
@@ -10538,11 +10562,13 @@ Util.Objects["activeProducts"] = new function() {
 					page.notify(response);
 					if(response && response.cms_status == "success") {
 						this.node.parentNode.removeChild(this.node);
-						var inactive_node = u.ge("item_id:"+this.node._item_id);
+						var inactive_node = u.ge("id:"+this.node._item_id);
+						console.log(inactive_node)
 						u.rc(inactive_node, "active");
 						this.node.div.nodes = u.qsa("li.item", this.node.div);
 					}
 				}
+						console.log(this.node)
 				u.request(this, this.node.div.url_remove_product+"/"+this.node._item_id, {"method":"post", "params":"csrf-token="+this.node.div.csrf_token});
 			}
 			if(inactive_node) {

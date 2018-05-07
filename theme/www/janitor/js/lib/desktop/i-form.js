@@ -23,7 +23,7 @@ Util.Objects["activeProducts"] = new function() {
 				inactive_node = true;
 
 				node = u.ie(this.list, node.cloneNode(true));
-				node._item_id = u.cv(node, "item_id");
+				node._item_id = u.cv(node, "id");
 				node.div = this;
 				u.rc(node, "active");
 				var actions = u.qs("ul.actions", node);
@@ -54,14 +54,15 @@ Util.Objects["activeProducts"] = new function() {
 					if(response && response.cms_status == "success") {
 
 						this.node.parentNode.removeChild(this.node);
-
-						var inactive_node = u.ge("item_id:"+this.node._item_id);
+						var inactive_node = u.ge("id:"+this.node._item_id);
+						console.log(inactive_node)
 						u.rc(inactive_node, "active");
 
 						this.node.div.nodes = u.qsa("li.item", this.node.div);
 					}
 
 				}
+						console.log(this.node)
 
 				u.request(this, this.node.div.url_remove_product+"/"+this.node._item_id, {"method":"post", "params":"csrf-token="+this.node.div.csrf_token});
 			}

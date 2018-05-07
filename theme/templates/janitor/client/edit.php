@@ -50,7 +50,7 @@ $contexts = $model->getContexts($item_id);
 		 	>
 			<ul class="items">
 			<? foreach($active_items as $a_item): ?>
-				<li class="item product item_id:<?= $a_item["id"] ?>">
+				<li class="item product id:<?= $a_item["id"] ?> item_id:<?= $a_item["id"] ?>">
 					<h3><?= $a_item["name"] ?></h3>
 
 					<?= $JML->tagList($a_item["tags"]) ?>
@@ -65,7 +65,7 @@ $contexts = $model->getContexts($item_id);
 		 	>
 			<ul class="items">
 			<? foreach($passive_items as $p_item): ?>
-				<li class="item product item_id:<?= $p_item["id"] ?><?= (arrayKeyValue($active_items, "id", $p_item["id"]) !== false) ? " active" : "" ?>">
+				<li class="item product id:<?= $p_item["id"] ?> item_id:<?= $p_item["id"] ?><?= (arrayKeyValue($active_items, "id", $p_item["id"]) !== false) ? " active" : "" ?>">
 					<h3><?= $p_item["name"] ?></h3>
 
 					<?= $JML->tagList($p_item["tags"]) ?>
