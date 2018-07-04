@@ -14,7 +14,7 @@
 
 	<div id="footer">
 		<div itemtype="http://schema.org/Organization" itemscope class="vcard company">
-			<h2 class="name fn org" itemprop="name">Eiland Hvidevareland A/S, Punkt1 Erhverv</h2>
+			<h2 class="name fn org" itemprop="name">Punkt1 Erhverv - Holbæk</h2>
 
 			<dl class="info basic">
 				<dt class="address">Adresse</dt>
@@ -26,7 +26,7 @@
 					</ul>
 				</dd>
 				<dt class="cvr">CVR</dt>
-				<dd class="cvr" itemprop="taxID">13 24 14 30</dd>
+				<dd class="cvr" itemprop="taxID">25 38 00 88</dd>
 			</dl>
 
 			<dl class="info contact">
