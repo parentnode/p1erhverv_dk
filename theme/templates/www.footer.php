@@ -1,10 +1,9 @@
 <? $navigation = $this->navigation("main"); ?>
-
 	</div>
 
 	<div id="navigation">
 		<ul class="navigation">
-		<? if($navigation): ?>
+		<? if($navigation && $navigation["nodes"]): ?>
 			<? foreach($navigation["nodes"] as $node): ?>
 			<?= $HTML->navigationLink($node); ?>
 			<? endforeach; ?>
