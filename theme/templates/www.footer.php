@@ -13,15 +13,15 @@
 
 	<div id="footer">
 		<div itemtype="http://schema.org/Organization" itemscope class="vcard company">
-			<h2 class="name fn org" itemprop="name">Punkt1 Erhverv - Holbæk</h2>
+			<h2 class="name fn org" itemprop="name">Punkt1 Erhverv</h2>
 
 			<dl class="info basic">
 				<dt class="address">Adresse</dt>
 				<dd class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
 					<ul>
-						<li class="streetaddress" itemprop="streetAddress">Stenhusvej 74-78</li>
-						<li class="city"><span class="postal" itemprop="postalCode">4300</span> <span class="locality" itemprop="addressLocality">Holbæk</span></li>
-						<li class="country" itemprop="addressCountry">Denmark</li>
+						<li class="streetaddress" itemprop="streetAddress"></li>
+						<li class="city"><span class="postal" itemprop="postalCode"></span> <span class="locality" itemprop="addressLocality"></span></li>
+						<li class="country" itemprop="addressCountry"></li>
 					</ul>
 				</dd>
 				<dt class="cvr">CVR</dt>
