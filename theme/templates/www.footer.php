@@ -19,21 +19,21 @@
 				<dt class="address">Adresse</dt>
 				<dd class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
 					<ul>
-						<li class="streetaddress" itemprop="streetAddress"></li>
-						<li class="city"><span class="postal" itemprop="postalCode"></span> <span class="locality" itemprop="addressLocality"></span></li>
+						<li class="streetaddress" itemprop="streetAddress">Stejlhøj 46</li>
+						<li class="city"><span class="postal" itemprop="postalCode">4400</span> <span class="locality" itemprop="addressLocality">Kalundborg</span></li>
 						<li class="country" itemprop="addressCountry"></li>
 					</ul>
 				</dd>
 				<dt class="cvr">CVR</dt>
-				<dd class="cvr" itemprop="taxID">25 38 00 88</dd>
+				<dd class="cvr" itemprop="taxID">31 58 90 45</dd>
 			</dl>
 
 			<dl class="info contact">
 				<dt class="contact">Kontakt os</dt>
 				<dd class="contact">
 					<ul>
-						<li class="email"><a href="mailto:sl@punkt1.dk" itemprop="email" content="sl@punkt1.dk">sl@punkt1.dk</a></li>
-						<li class="tel"><a href="callto:+4570205200" itemprop="tel" content="+4570205200">+45 7020 5200</a></li>
+						<li class="email"><a href="mailto:punkt1@p1erhverv.dk" itemprop="email" content="punkt1@p1erhverv.dk">punkt1@p1erhverv.dk</a></li>
+						<li class="tel"><a href="callto:+4538404065" itemprop="tel" content="+4570205200">+45 38 40 40 65</a></li>
 					</ul>
 				</dd>
 			</dl>
