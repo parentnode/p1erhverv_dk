@@ -1,12 +1,11 @@
 <?php
 $IC = new Items();
 
-$page_item = $IC->getItem(array("tags" => "page:test", "status" => 1, "extend" => array("mediae" => true, "tags" => true)));
+$page_item = $IC->getItem(array("tags" => "page:elstedhøj", "status" => 1, "extend" => array("mediae" => true, "tags" => true)));
 if($page_item) {
 	$this->sharingMetaData($page_item);
 }
 
-print_r($HTML);
 ?>
 <div class="scene monteringsplan i:scene">
 
