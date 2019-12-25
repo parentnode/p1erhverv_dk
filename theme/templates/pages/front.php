@@ -110,7 +110,7 @@ if($client_id) {
 
 			<? if($client["buy_button"]): ?>
 			<ul class="actions">
-				<li class="buy"><a href="mailto:sl@punkt1.dk?subject=Rekvisition:%20[Anfør%20nummer%20her]&body=Bestilling%20modtaget%20fra%20www.p1erhverv.dk%0D%0A%0D%0AVedhæft%20rekvisition%20–%20og%20send.">Bestil nu</a></li>
+				<li class="buy"><a href="mailto:ole@p1erhverv.dk?subject=Rekvisition:%20[Anfør%20nummer%20her]&body=Bestilling%20modtaget%20fra%20www.p1erhverv.dk%0D%0A%0D%0AVedhæft%20rekvisition%20–%20og%20send.">Bestil nu</a></li>
 			</ul>
 			<? endif; ?>
 		</div>
@@ -251,7 +251,7 @@ if($client_id) {
 
 <? else: ?>
 
-	<h3>Du har ikke tilladelse til at se denne side. Kontakt <a href="mailto:sl@punkt1.dk" content="sl@punkt1.dk">sl@punkt1.dk</a> for mere information.</h3>
+	<h3>Du har ikke tilladelse til at se denne side. Kontakt <a href="mailto:ole@p1erhverv.dk" content="ole@p1erhverv.dk">ole@p1erhverv.dk</a> for mere information.</h3>
 
 <? endif; ?>
 

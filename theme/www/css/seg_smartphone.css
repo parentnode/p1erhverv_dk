@@ -142,6 +142,7 @@ dd {display: inline-block; vertical-align: top; font-size: 13px; line-height: 1.
 #content .scene.product div.product div.image {width: 50%; display: inline-block; vertical-align: top;}
 #content .scene.product div.product div.image img {width: 100%;}
 #content .scene.product div.product div.text {width: 50%; display: inline-block; vertical-align: top; box-sizing: border-box; padding: 0 0 0 20px;}
+#content .scene.monteringsplan ul.info {display: none;}
 
 /*s-form.css*/
 #content .scene.login form {padding-bottom: 20px;}
