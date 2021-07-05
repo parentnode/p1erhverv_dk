@@ -1,6 +1,6 @@
 
 // generic 
-Util.Objects["activeProducts"] = new function() {
+Util.Modules["activeProducts"] = new function() {
 	this.init = function(div) {
 
 		var div_products = u.qs("div.products");
@@ -89,7 +89,7 @@ Util.Objects["activeProducts"] = new function() {
 }
 
 
-Util.Objects["inactiveProducts"] = new function() {
+Util.Modules["inactiveProducts"] = new function() {
 	this.init = function(div) {
 
 //		u.bug("inactive products:" + div.nodes.length)
@@ -137,7 +137,7 @@ Util.Objects["inactiveProducts"] = new function() {
 	}
 }
 
-Util.Objects["clientUsers"] = new function() {
+Util.Modules["clientUsers"] = new function() {
 	this.init = function(div) {
 
 		div.url_add_user = div.getAttribute("data-item-add");
@@ -194,7 +194,7 @@ Util.Objects["clientUsers"] = new function() {
 
 
 // generic 
-Util.Objects["activeContexts"] = new function() {
+Util.Modules["activeContexts"] = new function() {
 	this.init = function(div) {
 
 
@@ -283,7 +283,7 @@ Util.Objects["activeContexts"] = new function() {
 }
 
 
-Util.Objects["inactiveContexts"] = new function() {
+Util.Modules["inactiveContexts"] = new function() {
 	this.init = function(div) {
 
 //		u.bug("inactive contexts:" + div.nodes.length)
