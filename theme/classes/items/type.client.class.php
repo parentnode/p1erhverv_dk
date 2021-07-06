@@ -33,8 +33,11 @@ class TypeClient extends Itemtype {
 
 		// HTML
 		$this->addToModel("html", array(
+			"type" => "html",
 			"label" => "Intro tekst",
+			"allowed_tags" => "p,h3,h4,download",
 			"hint_message" => "Add a description of this client.", 
+			"error_message" => "No words? How weird.",
 		));
 
 		// secret_url_token

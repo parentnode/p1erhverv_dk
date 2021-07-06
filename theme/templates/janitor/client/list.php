@@ -15,7 +15,7 @@ $items = $IC->getItems(array("itemtype" => $itemtype, "order" => "status DESC, p
 		<?= $JML->listNew(array("label" => "New client")) ?>
 	</ul>
 
-	<div class="all_items i:defaultList sortable filters"<?= $JML->jsData() ?>>
+	<div class="all_items i:defaultList sortable filters"<?= $HTML->jsData() ?>>
 <?		if($items): ?>
 		<ul class="items">
 <?			foreach($items as $item): ?>

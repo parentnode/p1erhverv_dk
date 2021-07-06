@@ -183,7 +183,7 @@ if($client_id) {
 			<h2>Produkter</h2>
 			<ul class="items products">
 			<? foreach($items as $item): ?>
-				<li class="item product id:<?= $item["item_id"] ?><?= $JML->jsMedia($item) ?><?= ($client["instant_delivery"] && arrayKeyValue($item["tags"], "value", "Strakslevering") !== false) ? " instant" : "" ?>" itemscope itemtype="http://schema.org/Product">
+				<li class="item product id:<?= $item["item_id"] ?><?= $HTML->jsMedia($item) ?><?= ($client["instant_delivery"] && arrayKeyValue($item["tags"], "value", "Strakslevering") !== false) ? " instant" : "" ?>" itemscope itemtype="http://schema.org/Product">
 
 					<ul class="tags">
 					<? if($item["tags"]): ?>

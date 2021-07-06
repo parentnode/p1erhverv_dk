@@ -27,7 +27,7 @@ $contexts = $model->getContexts($item_id);
 
 			<fieldset>
 				<?= $model->input("name", array("value" => $item["name"])) ?>
-				<?= $model->inputHTML("html", array("value" => $item["html"])) ?>
+				<?= $model->input("html", array("value" => $item["html"])) ?>
 
 				<?= $model->input("buy_button", array("type" => "checkbox", "value" => $item["buy_button"])) ?>
 				<?= $model->input("instant_delivery", array("type" => "checkbox", "value" => $item["instant_delivery"])) ?>

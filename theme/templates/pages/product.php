@@ -14,7 +14,7 @@ $item = $IC->getItem(array("sindex" => $sindex, "extend" => array("user" => true
 
 <? if($item): ?>
 
-	<div class="product i:product<?= $JML->jsMedia($item) ?>" itemscope itemtype="http://schema.org/Product">
+	<div class="product i:product<?= $HTML->jsMedia($item) ?>" itemscope itemtype="http://schema.org/Product">
 
 		<h1 itemprop="headline"><?= $item["name"] ?></h1>
 
