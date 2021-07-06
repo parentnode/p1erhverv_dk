@@ -3,10 +3,10 @@ CREATE TABLE `SITE_DB`.`item_product` (
   `item_id` int(11) NOT NULL,
 
   `name` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `html` text NOT NULL,
-  `ean` varchar(20),
-  `price` varchar(30),
+  `description` text NOT NULL DEFAULT '',
+  `html` text NOT NULL DEFAULT '',
+  `ean` varchar(20) DEFAULT '',
+  `price` varchar(30) DEFAULT '',
 
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
