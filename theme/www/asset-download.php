@@ -75,11 +75,11 @@ if(count($action) == 3 && session()->value("useragent") === $_SERVER["HTTP_USER_
 			ob_end_flush();
 			readfile($file);
 
-			mailer()->send([
-				"subject" => "File downloaded on ".SITE_URL." ($file_name)", 
-				"message" => "File was downloaded:<br>$file",
-				"template" => "system"
-			]);
+			// mailer()->send([
+			// 	"subject" => "File downloaded on ".SITE_URL." ($file_name)",
+			// 	"message" => "File was downloaded:<br>$file",
+			// 	"template" => "system"
+			// ]);
 
 			exit();
 		}

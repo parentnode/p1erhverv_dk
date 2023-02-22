@@ -18,7 +18,7 @@ $item = $IC->getItem(array("sindex" => $sindex, "extend" => array("mediae" => tr
 		<? foreach($item["mediae"] as $media): ?>
 			<li class="asset">
 				<span class="file_name"><?= $media["name"] ?></span><br />
-				<a href="/asset-download/<?= $media["item_id"] ?>/<?= $media["variant"] ?>/<?= supernormalize($media["name"]) ?>.<?= $media["format"] ?>">Link</a> – <span class="link_text"><?= SITE_URL ?>/asset-download/<?= $media["item_id"] ?>/<?= $media["variant"] ?>/<?= supernormalize($media["name"]) ?>.<?= $media["format"] ?></span>
+				<a href="/asset-download/<?= $media["item_id"] ?>/<?= $media["variant"] ?>/<?= supernormalize($media["name"]) ?>.<?= $media["format"] ?>" target="_blank">Link</a> – <span class="link_text"><?= SITE_URL ?>/asset-download/<?= $media["item_id"] ?>/<?= $media["variant"] ?>/<?= supernormalize($media["name"]) ?>.<?= $media["format"] ?></span>
 		<? endforeach; ?>
 		</ul>
 
