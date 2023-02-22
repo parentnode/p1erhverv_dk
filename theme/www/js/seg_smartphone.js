@@ -1,5 +1,5 @@
 /*
-asset-builder @ 2021-07-06 10:39:35
+asset-builder @ 2023-02-22 10:38:45
 */
 
 /*seg_smartphone_include.js*/
@@ -4027,3 +4027,31 @@ Util.Objects["product"] = new function() {
 		u.ie(div._image, "img", {"src":"/images/"+div._item_id+"/"+div._variant+"/480x480."+div._format});
 	}
 }
+
+/*i-assets.js*/
+Util.Objects["assets"] = new function() {
+	this.init = function(scene) {
+		scene.resized = function() {
+		}
+		scene.scrolled = function() {
+		}
+		scene.ready = function() {
+			page.cN.scene = this;
+			this.assets = u.qsa("li.asset span.link_text", this);
+			var i, asset;
+			for(i = 0; i < this.assets.length; i++) {
+				asset = this.assets[i];
+				asset.dblclicked = function(event) {
+					var sel = window.getSelection();
+					var range = sel.getRangeAt(0);
+					var node = sel.anchorNode;
+					range.setStart(node, 0);
+					range.setEnd(node, node.textContent.length);
+				}
+				u.e.dblclick(asset);
+			}
+		}
+		scene.ready();
+	}
+}
+

@@ -1,5 +1,5 @@
 /*
-asset-builder @ 2021-07-06 10:39:35
+asset-builder @ 2023-02-22 10:38:45
 */
 
 /*seg_desktop_include.css*/
@@ -182,6 +182,7 @@ body.fixed #page {width: 960px;}
 #content .scene.product div.product div.image img {width: 100%;}
 #content .scene.product div.product div.text {width: 50%; display: inline-block; vertical-align: top; box-sizing: border-box; padding: 0 0 0 20px;}
 #content .scene.monteringsplan ul.info {display: none;}
+#content .scene.assets ul.assets li.asset {padding: 0 0 10px;}
 
 /*s-form.css*/
 #content .scene.login form {padding-bottom: 20px;}
