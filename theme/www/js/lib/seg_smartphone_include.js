@@ -10,3 +10,5 @@ document.write('<script type="text/javascript" src="/js/lib/smartphone/i-scene.j
 
 document.write('<script type="text/javascript" src="/js/lib/smartphone/i-products.js"></script>');
 document.write('<script type="text/javascript" src="/js/lib/smartphone/i-product.js"></script>');
+
+document.write('<script type="text/javascript" src="/js/lib/smartphone/i-assets.js"></script>');

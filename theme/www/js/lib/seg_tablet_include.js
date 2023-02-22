@@ -10,3 +10,5 @@ document.write('<script type="text/javascript" src="/js/lib/desktop/i-scene.js">
 
 document.write('<script type="text/javascript" src="/js/lib/desktop/i-products.js"></script>');
 document.write('<script type="text/javascript" src="/js/lib/desktop/i-product.js"></script>');
+
+document.write('<script type="text/javascript" src="/js/lib/desktop/i-assets.js"></script>');

@@ -6,7 +6,7 @@ $sindex = $action[0];
 $item = $IC->getItem(array("sindex" => $sindex, "extend" => array("mediae" => true)));
 
 ?>
-<div class="scene assets i:scene">
+<div class="scene assets i:assets">
 
 <? if($item): ?>
 
@@ -14,9 +14,11 @@ $item = $IC->getItem(array("sindex" => $sindex, "extend" => array("mediae" => tr
 
 		<h1 itemprop="headline"><?= $item["name"] ?></h1>
 
-		<ul class="mediae">
+		<ul class="assets">
 		<? foreach($item["mediae"] as $media): ?>
-			<li><a href="/download/<?= $media["item_id"] ?>/<?= $media["variant"] ?>/<?= supernormalize($media["name"]) ?>.<?= $media["format"] ?>"><?= $media["name"] ?></a>
+			<li class="asset">
+				<span class="file_name"><?= $media["name"] ?></span><br />
+				<a href="/asset-download/<?= $media["item_id"] ?>/<?= $media["variant"] ?>/<?= supernormalize($media["name"]) ?>.<?= $media["format"] ?>">Link</a> – <span class="link_text"><?= SITE_URL ?>/asset-download/<?= $media["item_id"] ?>/<?= $media["variant"] ?>/<?= supernormalize($media["name"]) ?>.<?= $media["format"] ?></span>
 		<? endforeach; ?>
 		</ul>
 
