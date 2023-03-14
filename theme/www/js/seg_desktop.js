@@ -1,5 +1,5 @@
 /*
-asset-builder @ 2023-02-22 10:38:45
+asset-builder @ 2023-03-14 23:19:43
 */
 
 /*seg_desktop_include.js*/
@@ -3752,6 +3752,24 @@ Util.Objects["product"] = new function() {
 		div._format = u.cv(div, "format");
 		div._image = u.ie(div, "div", {"class":"image"});
 		u.ie(div._image, "img", {"src":"/images/"+div._item_id+"/"+div._variant+"/480x480."+div._format});
+	}
+}
+
+/*i-product-data.js*/
+Util.Objects["productData"] = new function() {
+	this.init = function(div) {
+		u.bug("init ", div);
+		div.form = u.qs("form", div);
+		u.f.init(div.form);
+		div.result = u.qs("div.result");
+		div.form.div = div;
+		div.form.submitted = function() {
+			this.response = function(response) {
+				u.bug("response", response);
+				this.div.result.innerHTML = "<pre>"+JSON.stringify(response, undefined, 2) + "</pre>";
+			}
+			u.request(this, "https://www.punkt1.dk/api/v2/products", {data:u.f.getParams(this)});
+		}
 	}
 }
 
