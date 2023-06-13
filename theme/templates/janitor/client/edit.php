@@ -45,8 +45,8 @@ $contexts = $model->getContexts($item_id);
 		<h3>Products for <?= $item["name"] ?></h3>
 		<div class="all_items active filters sortable i:defaultList i:activeProducts"
 		 	data-csrf-token="<?= session()->value("csrf") ?>" 
-			data-item-order="<?= $this->validPath("/janitor/client/updateProductOrder/".$item["id"]) ?>"
-			data-item-remove="<?= $this->validPath("/janitor/client/removeProduct/".$item["id"]) ?>"
+			data-item-order="<?= security()->validPath("/janitor/client/updateProductOrder/".$item["id"]) ?>"
+			data-item-remove="<?= security()->validPath("/janitor/client/removeProduct/".$item["id"]) ?>"
 		 	>
 			<ul class="items">
 			<? foreach($active_items as $a_item): ?>
@@ -61,7 +61,7 @@ $contexts = $model->getContexts($item_id);
 		<h3>Other available products</h3>
 		<div class="all_items inactive filters i:defaultList i:inactiveProducts"
 		 	data-csrf-token="<?= session()->value("csrf") ?>" 
-			data-item-add="<?= $this->validPath("/janitor/client/addProduct/".$item["id"]) ?>"
+			data-item-add="<?= security()->validPath("/janitor/client/addProduct/".$item["id"]) ?>"
 		 	>
 			<ul class="items">
 			<? foreach($passive_items as $p_item): ?>
@@ -77,8 +77,8 @@ $contexts = $model->getContexts($item_id);
 
 	<div class="users i:collapseHeader i:clientUsers"
 		data-csrf-token="<?= session()->value("csrf") ?>" 
-		data-item-remove="<?= $this->validPath("/janitor/client/removeUser/".$item["id"]) ?>"
-		data-item-add="<?= $this->validPath("/janitor/client/addUser/".$item["id"]) ?>"
+		data-item-remove="<?= security()->validPath("/janitor/client/removeUser/".$item["id"]) ?>"
+		data-item-add="<?= security()->validPath("/janitor/client/addUser/".$item["id"]) ?>"
 		>
 		<h2>Users</h2>
 
@@ -97,8 +97,8 @@ $contexts = $model->getContexts($item_id);
 		<h3>Active contexts</h3>
 		<div class="all_items active filters sortable i:defaultList i:activeContexts"
 		 	data-csrf-token="<?= session()->value("csrf") ?>" 
-			data-item-order="<?= $this->validPath("/janitor/client/updateContextOrder/".$item["id"]) ?>"
-			data-item-remove="<?= $this->validPath("/janitor/client/removeContext/".$item["id"]) ?>"
+			data-item-order="<?= security()->validPath("/janitor/client/updateContextOrder/".$item["id"]) ?>"
+			data-item-remove="<?= security()->validPath("/janitor/client/removeContext/".$item["id"]) ?>"
 		 	>
 			<ul class="items">
 			<? foreach($contexts["client"] as $a_item): ?>
@@ -111,7 +111,7 @@ $contexts = $model->getContexts($item_id);
 		<h3>Passive contexts</h3>
 		<div class="all_items inactive filters i:defaultList i:inactiveContexts"
 		 	data-csrf-token="<?= session()->value("csrf") ?>" 
-			data-item-add="<?= $this->validPath("/janitor/client/addContext/".$item["id"]) ?>"
+			data-item-add="<?= security()->validPath("/janitor/client/addContext/".$item["id"]) ?>"
 		 	>
 			<ul class="items">
 			<? foreach($contexts["all"] as $p_item): ?>

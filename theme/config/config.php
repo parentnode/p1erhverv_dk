@@ -9,6 +9,7 @@ header("Content-type: text/html; charset=UTF-8");
 error_reporting(E_ALL);
 
 define("VERSION", "0.7.9.2");
+define("UI_BUILD", "UN-BUILT");
 
 define("SITE_UID", "p1e");
 define("SITE_NAME", "Punkt1, Erhverv");
