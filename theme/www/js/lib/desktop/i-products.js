@@ -1,4 +1,4 @@
-Util.Objects["products"] = new function() {
+Util.Modules["products"] = new function() {
 	this.init = function(div) {
 
 

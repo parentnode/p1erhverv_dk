@@ -1,4 +1,4 @@
-Util.Objects["assets"] = new function() {
+Util.Modules["assets"] = new function() {
 	this.init = function(scene) {
 //		u.bug("scene init:" + u.nodeId(scene))
 

@@ -1,2 +1,2 @@
-u.ga_account = 'UA-78988565-1';
+u.ga_account = 'G-TTD9P27TTG';
 u.ga_domain = 'p1erhverv.dk';
