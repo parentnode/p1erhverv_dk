@@ -6,6 +6,13 @@
 
 class TypeClient extends Itemtype {
 
+
+	public $db;
+	public $db_users;
+	public $db_products;
+	public $db_contexts;
+
+
 	/**
 	* Init, set varnames, validation rules
 	*/
