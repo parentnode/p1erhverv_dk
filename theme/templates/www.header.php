@@ -17,8 +17,8 @@
 	<link type="text/css" rel="stylesheet" media="all" href="/css/lib/seg_<?= $this->segment() ?>_include.css" />
 	<script type="text/javascript" src="/js/lib/seg_<?= $this->segment() ?>_include.js"></script>
 <? } else { ?>
-	<link type="text/css" rel="stylesheet" media="all" href="/css/seg_<?= $this->segment() ?>.css?rev=20230613-111740" />
-	<script type="text/javascript" src="/js/seg_<?= $this->segment() ?>.js?rev=20230613-111740"></script>
+	<link type="text/css" rel="stylesheet" media="all" href="/css/seg_<?= $this->segment() ?>.css?rev=20230919-003628" />
+	<script type="text/javascript" src="/js/seg_<?= $this->segment() ?>.js?rev=20230919-003628"></script>
 <? } ?>
 
 	<?= $this->headerIncludes() ?>
