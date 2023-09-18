@@ -15,10 +15,9 @@ $page->pageTitle("Punkt1 Erhverv");
 
 
 
-$page->page(array(
+$page->page([
 	"templates" => "pages/front.php"
-	)
-);
+]);
 exit();
 
 
