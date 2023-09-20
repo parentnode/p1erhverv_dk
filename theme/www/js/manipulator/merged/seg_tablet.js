@@ -1,6 +1,6 @@
 /*
 Manipulator v0.9.4-p1erhverv_dk Copyright 2023 https://manipulator.parentnode.dk
-js-merged @ 2023-06-13 10:47:27
+js-merged @ 2023-09-20 09:49:37
 */
 
 /*seg_tablet_include.js*/
@@ -1665,8 +1665,8 @@ Util.Form = u.f = new function() {
 			}
 		}
 		if(!field._custom_initialized) {
-			if(u.hc(field, "string|email|tel|number|integer|password|date|datetime")) {
-				field.type = field.className.match(/(?:^|\b)(string|email|tel|number|integer|password|date|datetime)(?:\b|$)/)[0];
+			if(u.hc(field, "string|email|tel|number|integer|password")) {
+				field.type = field.className.match(/(?:^|\b)(string|email|tel|number|integer|password)(?:\b|$)/)[0];
 				field.input = u.qs("input", field);
 				field.input._form = _form;
 				field.input.label = u.qs("label[for='"+field.input.id+"']", field);
@@ -1770,6 +1770,19 @@ Util.Form = u.f = new function() {
 					this.inputOnEnter(input);
 					this.activateInput(input);
 				}
+			}
+			else if(u.hc(field, "date|datetime")) {
+				field.type = field.className.match(/(?:^|\b)(date|datetime)(?:\b|$)/)[0];
+				field.input = u.qs("input", field);
+				field.input._form = _form;
+				field.input.label = u.qs("label[for='"+field.input.id+"']", field);
+				field.input.field = field;
+				field.input.val = this._value_date;
+				u.e.addEvent(field.input, "keyup", this._updated);
+				u.e.addEvent(field.input, "change", this._changed);
+				u.e.addEvent(field.input, "change", this._updated);
+				this.inputOnEnter(field.input);
+				this.activateInput(field.input);
 			}
 			else if(u.hc(field, "files")) {
 				field.type = "files";
@@ -1935,6 +1948,16 @@ Util.Form = u.f = new function() {
 			}
 		}
 		return (this.selectedIndex >= 0 && this.default_value != this.options[this.selectedIndex].value) ? this.options[this.selectedIndex].value : "";
+	}
+	this._value_date = function(value) {
+		if(value !== undefined) {
+			this.value = value;
+			if(value !== this.default_value) {
+				u.rc(this, "default");
+			}
+			u.f.validate(this);
+		}
+		return (this.value != this.default_value) ? this.value.replace("T", " ") : "";
 	}
 	this._value_file = function(value) {
 		if(value !== undefined) {
@@ -2809,6 +2832,54 @@ Util.Form = u.f = new function() {
 }
 
 
+/*u-form-labelstyle-inject.js*/
+Util.Form.customLabelStyle["inject"] = function(iN) {
+	if(!iN.type || !iN.type.match(/file|radio|checkbox/)) {
+		iN.default_value = u.text(iN.label);
+		u.e.addEvent(iN, "focus", u.f._changed_state);
+		u.e.addEvent(iN, "blur", u.f._changed_state);
+		u.e.addEvent(iN, "change", u.f._changed_state);
+		if(iN.type.match(/number|integer|password/)) {
+			iN.pseudolabel = u.ae(iN.parentNode, "span", {"class":"pseudolabel", "html":iN.default_value});
+			iN.pseudolabel.iN = iN;
+			u.as(iN.pseudolabel, "top", iN.offsetTop+"px");
+			u.as(iN.pseudolabel, "left", iN.offsetLeft+"px");
+			u.ce(iN.pseudolabel)
+			iN.pseudolabel.inputStarted = function(event) {
+				u.e.kill(event);
+				this.iN.focus();
+			}
+		}
+		u.f.updateDefaultState(iN);
+	}
+}
+u.f._changed_state = function() {
+	u.f.updateDefaultState(this);
+}
+u.f.updateDefaultState = function(iN) {
+	if(iN.is_focused || iN.val() !== "") {
+		u.rc(iN, "default");
+		if(iN.field.virtual_input) {
+			u.rc(iN.field.virtual_input, "default");
+		}
+		if(iN.val() === "" && !iN.type.match(/date|datetime/)) {
+			iN.val("");
+		}
+	}
+	else {
+		if(iN.val() === "") {
+			u.ac(iN, "default");
+			if(obj(iN.field.virtual_input)) {
+				u.ac(iN.field.virtual_input, "default");
+			}
+			if(!iN.type.match(/date|datetime/)) {
+				iN.val(iN.default_value);
+			}
+		}
+	}
+}
+
+
 /*u-geometry.js*/
 Util.absoluteX = u.absX = function(node) {
 	if(node.offsetParent) {
@@ -2966,7 +3037,7 @@ u._queueLoader = function() {
 				u._preloader_processes++;
 				u.rc(next, "waiting");
 				u.ac(next, "loading");
-				if(next._file.match(/png|jpg|gif|svg/)) {
+				if(next._file.match(/png|jpg|gif|svg|avif|webp/)) {
 					next.loaded = function(event) {
 						this.image = event.target;
 						this._image = this.image;
